@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  prismscope-website:
+    image: prismscope-website:latest
+    container_name: prismscope-website-ssl
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "https://localhost/health", "--no-check-certificate"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    volumes:
+      # SSL certificates
+      - ./ssl:/etc/nginx/ssl:ro
+      # SSL-enabled nginx configuration
+      - ./nginx-ssl.conf:/etc/nginx/conf.d/default.conf:ro
+      # Let's Encrypt webroot for certificate renewal
+      - ./certbot/www:/var/www/certbot:ro
+    networks:
+      - prismscope-prod-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+  # Optional: Certbot container for automatic renewal
+  certbot:
+    image: certbot/certbot
+    container_name: prismscope-certbot
+    volumes:
+      - ./ssl:/etc/letsencrypt/live/prismscope.ai:rw
+      - ./certbot/www:/var/www/certbot:rw
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot; sleep 12h & wait $${!}; done;'"
+    networks:
+      - prismscope-prod-network
+    profiles:
+      - certbot
+
+networks:
+  prismscope-prod-network:
+    driver: bridge

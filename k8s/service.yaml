@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prismscope-website-service
+  namespace: external-web
+  labels:
+    app: prismscope-website
+    tier: frontend
+  annotations:
+    # Reserve a static IP for the LoadBalancer
+    cloud.google.com/load-balancer-type: "External"
+    # Uncomment and replace with your static IP name after creating it:
+    # cloud.google.com/reserved-ip-name: "prismscope-website-static-ip"
+spec:
+  type: LoadBalancer
+  loadBalancerSourceRanges:
+  - 0.0.0.0/0  # Allow all IPs - restrict as needed for security
+  selector:
+    app: prismscope-website
+    tier: frontend
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  sessionAffinity: None

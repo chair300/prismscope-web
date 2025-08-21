@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  prismscope-website:
+    image: prismscope-website:latest
+    container_name: prismscope-website-prod
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    volumes:
+      # SSL certificates (if using)
+      # - ./ssl:/etc/nginx/ssl:ro
+      # Custom nginx config for production (if needed)
+      # - ./nginx.prod.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - prismscope-prod-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+
+networks:
+  prismscope-prod-network:
+    driver: bridge

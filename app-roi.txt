@@ -1,0 +1,35 @@
+Prismscope is a comprehensive AI-powered organizational optimization platform that acts as an intelligent consultant to uncover root causes and find optimal solutions across technology, processes, and people. The platform conducts in-depth organizational health surveys while identifying specific issues, serving as both a diagnostic tool and strategic intelligence gathering system for building optimization roadmaps. Christopher Harrison, PhD (harrison@glsan.com) is the primary architect and developer of this platform.
+
+## Key Features
+
+### 1. Root Cause Analysis & Organizational Health Surveying
+- **Deep Diagnostic Conversations**: 4-5 focused questions to uncover systemic issues beyond symptoms
+- **Organizational Health Indicators**: Captures team morale, process maturity, change readiness, decision speed, resource availability, customer impact, and competitive positioning
+- **Progressive Probing**: Uses "Why?" methodology to get to underlying causes of organizational problems
+- **Business Impact Quantification**: Measures time, money, and opportunity costs with specific success metrics
+
+### 2. Comprehensive Technical vs Non-Technical Classification
+- **Technical Analysis**: Identifies issues solvable through automation, data integration, workflow systems, and technology solutions
+- **Non-Technical Analysis**: Recognizes organizational challenges requiring process design, communication improvement, cultural change, and leadership alignment
+- **Dual Solution Pathways**: Provides specific technology recommendations AND organizational intervention strategies
+- **Success Metrics Definition**: Establishes current → target state measurements for both technical and organizational solutions
+
+### 3. Strategic Intelligence & Conversation Analytics
+- **Conversation Prompt Storage**: Captures the specific questions that led to each analysis for future refinement
+- **Issue Refinement Capabilities**: Edit and improve problem statements through iterative conversation
+- **Optimization Roadmapping**: Builds comprehensive improvement strategies across technology, processes, and people
+- **STOP Command**: Immediate analysis generation at any point in the conversation
+
+### 4. Enhanced Session Management
+- **Context Preservation**: Resume conversations with full organizational context and history
+- **Multi-Issue Discovery**: Handle multiple organizational challenges within single diagnostic sessions
+- **Token Management**: Conversation length monitoring with intelligent cutoff recommendations
+- **Progress Tracking**: Monitor diagnostic completion and organizational insight gathering
+
+### 5. Advanced Administrative Analytics
+- **Domain-Based Organizational Intelligence**: Analyze patterns across organizations and departments
+- **User Activity & Health Tracking**: Complete user diagnostic activity with organizational health trends
+- **Issue Classification Analytics**: Track technical vs non-technical problem distributions
+- **Organizational Health Dashboards**: Monitor team morale, process maturity, and change readiness across user base
+- **AI-Powered Similarity Reports**: Generate intelligent analysis of common problems and solutions by domain
+

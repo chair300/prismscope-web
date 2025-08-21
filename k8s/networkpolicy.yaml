@@ -1,0 +1,56 @@
+# Network policy for additional security isolation
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: prismscope-website-netpol
+  namespace: prismscope
+spec:
+  podSelector:
+    matchLabels:
+      app: prismscope-website
+      tier: frontend
+  
+  policyTypes:
+  - Ingress
+  - Egress
+  
+  # Ingress rules - allow traffic from ingress controller
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: ingress-nginx
+    ports:
+    - protocol: TCP
+      port: 8080
+  
+  # Also allow traffic from within the same namespace (for health checks, etc.)
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: prismscope
+    ports:
+    - protocol: TCP
+      port: 8080
+  
+  # Egress rules - allow DNS resolution and health checks
+  egress:
+  # Allow DNS resolution
+  - to: []
+    ports:
+    - protocol: UDP
+      port: 53
+    - protocol: TCP
+      port: 53
+  
+  # Allow HTTPS for potential external API calls (if needed)
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 443
+  
+  # Allow HTTP for health checks and cert validation
+  - to: []
+    ports:
+    - protocol: TCP
+      port: 80

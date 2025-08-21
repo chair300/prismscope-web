@@ -1,0 +1,30 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: prismscope-website
+  namespace: external-web
+
+# Resources to deploy
+resources:
+  - namespace.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+  - cluster-issuer.yaml
+
+# Common labels applied to all resources
+commonLabels:
+  app.kubernetes.io/name: prismscope-website
+  app.kubernetes.io/instance: prismscope-website
+  app.kubernetes.io/version: "1.0.0"
+  app.kubernetes.io/component: frontend
+  app.kubernetes.io/part-of: prismscope-platform
+
+# Images to patch (useful for CI/CD)
+images:
+  - name: gcr.io/ai-problem-statement/prismscope-website
+    newTag: latest
+
+# Namespace for all resources
+namespace: external-web

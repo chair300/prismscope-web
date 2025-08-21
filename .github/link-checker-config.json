@@ -1,0 +1,29 @@
+{
+  "filterLevel": 2,
+  "honorRobotExclusions": false,
+  "excludeExternalLinks": true,
+  "excludeInternalLinks": false,
+  "excludeLinksToSamePage": false,
+  "followRobotExclusions": false,
+  "maxSocketsPerHost": 5,
+  "userAgent": "Prismscope-Link-Checker/1.0",
+  "requestMethod": "head",
+  "maxRetries": 2,
+  "retryDelay": 100,
+  "timeout": 30000,
+  "excludedKeywords": [
+    "javascript:",
+    "mailto:",
+    "tel:",
+    "#",
+    "data:",
+    "blob:",
+    "about:blank"
+  ],
+  "acceptedSchemes": [
+    "http",
+    "https"
+  ],
+  "cacheResponses": true,
+  "cacheTTL": 3600000
+}

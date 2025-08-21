@@ -1,0 +1,337 @@
+name: Prismscope CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master, develop ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    # Run broken link check daily at 6 AM UTC
+    - cron: '0 6 * * *'
+
+env:
+  PROJECT_ID: ai-problem-statement
+  GKE_CLUSTER: your-cluster-name  # Update with your cluster name
+  GKE_ZONE: us-central1-a         # Update with your cluster zone
+  DEPLOYMENT_NAME: prismscope-website
+  IMAGE: prismscope-website
+  NAMESPACE: external-web
+
+jobs:
+  # Job 1: Build and Test
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run build
+      run: npm run build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-files
+        path: dist/
+        retention-days: 1
+
+  # Job 2: Broken Link Testing
+  link-checker:
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Download build artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: dist-files
+        path: dist/
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install http-server for local testing
+      run: npm install -g http-server
+
+    - name: Start local server
+      run: |
+        http-server dist -p 8080 -s &
+        echo $! > server.pid
+        sleep 5
+
+    - name: Install broken-link-checker
+      run: npm install -g broken-link-checker
+
+    - name: Check for broken links (local)
+      run: |
+        echo "🔍 Checking for broken links in local build..."
+        blc http://localhost:8080 -ro --filter-level 2 --exclude-external || {
+          echo "❌ Broken links found in local build!"
+          exit 1
+        }
+        echo "✅ No broken links found in local build"
+
+    - name: Stop local server
+      run: |
+        if [ -f server.pid ]; then
+          kill $(cat server.pid) || true
+          rm server.pid
+        fi
+
+    - name: Check live website links (if deployed)
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      run: |
+        echo "🌐 Checking for broken links on live website..."
+        # Wait a bit for any deployments to complete
+        sleep 30
+        blc https://prismscope.ai -ro --filter-level 2 --exclude-external || {
+          echo "❌ Broken links found on live website!"
+          echo "::warning::Broken links detected on live website"
+          # Don't fail the build for live site issues
+        }
+
+    - name: Generate link check report
+      if: always()
+      run: |
+        echo "📊 Link Check Report" >> link-report.txt
+        echo "===================" >> link-report.txt
+        echo "Date: $(date)" >> link-report.txt
+        echo "Commit: ${{ github.sha }}" >> link-report.txt
+        echo "Branch: ${{ github.ref_name }}" >> link-report.txt
+        
+        if [ "${{ job.status }}" = "success" ]; then
+          echo "Status: ✅ All links working" >> link-report.txt
+        else
+          echo "Status: ❌ Broken links found" >> link-report.txt
+        fi
+
+    - name: Upload link check report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: link-check-report
+        path: link-report.txt
+        retention-days: 7
+
+  # Job 3: Docker Build and Push
+  build-and-push:
+    runs-on: ubuntu-latest
+    needs: [build-and-test, link-checker]
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        project_id: ${{ env.PROJECT_ID }}
+
+    - name: Configure Docker for GCR
+      run: gcloud auth configure-docker --quiet
+
+    - name: Build Docker image
+      run: |
+        docker build -t gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA \
+                     -t gcr.io/$PROJECT_ID/$IMAGE:latest .
+
+    - name: Push Docker image
+      run: |
+        docker push gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA
+        docker push gcr.io/$PROJECT_ID/$IMAGE:latest
+
+    - name: Output image details
+      run: |
+        echo "🐳 Docker images pushed:"
+        echo "  gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA"
+        echo "  gcr.io/$PROJECT_ID/$IMAGE:latest"
+
+  # Job 4: Deploy to GKE
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup Google Cloud CLI
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        service_account_key: ${{ secrets.GCP_SA_KEY }}
+        project_id: ${{ env.PROJECT_ID }}
+
+    - name: Get GKE credentials
+      run: |
+        gcloud container clusters get-credentials "$GKE_CLUSTER" \
+          --zone "$GKE_ZONE" --project "$PROJECT_ID"
+
+    - name: Deploy cert-manager ClusterIssuer
+      run: |
+        kubectl apply -f k8s/cluster-issuer.yaml
+
+    - name: Update image tag in deployment
+      run: |
+        # Update the image tag to use the commit SHA
+        cd k8s
+        # Using sed to update the image tag in kustomization.yaml
+        sed -i "s|newTag: latest|newTag: $GITHUB_SHA|g" kustomization.yaml
+
+    - name: Deploy to GKE
+      run: |
+        kubectl apply -k k8s/
+        
+        # Wait for deployment to complete
+        kubectl rollout status deployment/$DEPLOYMENT_NAME -n $NAMESPACE --timeout=300s
+
+    - name: Verify deployment
+      run: |
+        echo "🚀 Deployment completed successfully!"
+        kubectl get all -n $NAMESPACE
+        
+        # Get external IP
+        EXTERNAL_IP=$(kubectl get service prismscope-website-service -n $NAMESPACE \
+          --output jsonpath='{.status.loadBalancer.ingress[0].ip}' || echo "Pending...")
+        
+        echo "🌐 External IP: $EXTERNAL_IP"
+        echo "🔗 Website: https://prismscope.ai"
+
+    - name: Post-deployment link check
+      run: |
+        echo "⏳ Waiting for deployment to be ready..."
+        sleep 60
+        
+        echo "🔍 Running post-deployment link check..."
+        npm install -g broken-link-checker
+        
+        # Check the deployed website
+        blc https://prismscope.ai -ro --filter-level 2 --exclude-external --max-concurrency 5 || {
+          echo "⚠️ Warning: Some links may be broken on the deployed site"
+          echo "::warning::Post-deployment link check found issues"
+        }
+
+  # Job 5: Notification and Reporting
+  notify:
+    runs-on: ubuntu-latest
+    needs: [build-and-test, link-checker, build-and-push, deploy]
+    if: always() && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master')
+    
+    steps:
+    - name: Generate deployment summary
+      run: |
+        echo "🚀 **Prismscope Deployment Summary**" >> $GITHUB_STEP_SUMMARY
+        echo "=================================" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- **Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Triggered by:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ needs.build-and-test.result }}" = "success" ]; then
+          echo "✅ **Build & Test:** Passed" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Build & Test:** Failed" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ needs.link-checker.result }}" = "success" ]; then
+          echo "✅ **Link Check:** No broken links found" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "⚠️ **Link Check:** Issues detected" >> $GITHUB_STEP_SUMMARY
+        fi
+        
+        if [ "${{ needs.deploy.result }}" = "success" ]; then
+          echo "✅ **Deployment:** Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 **Live Site:** https://prismscope.ai" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "❌ **Deployment:** Failed" >> $GITHUB_STEP_SUMMARY
+        fi
+
+  # Separate job for scheduled link checks
+  scheduled-link-check:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install broken-link-checker
+      run: npm install -g broken-link-checker
+
+    - name: Comprehensive link check
+      run: |
+        echo "🔍 Running comprehensive scheduled link check..."
+        
+        # Check main site
+        blc https://prismscope.ai -ro --filter-level 1 --exclude-external --max-concurrency 5 > main-site-check.txt 2>&1 || {
+          echo "❌ Issues found on main site"
+          MAIN_STATUS="failed"
+        }
+        
+        # Check www redirect
+        blc https://www.prismscope.ai -ro --filter-level 1 --exclude-external --max-concurrency 5 > www-site-check.txt 2>&1 || {
+          echo "❌ Issues found on www site"
+          WWW_STATUS="failed"
+        }
+
+    - name: Create issue if links are broken
+      if: env.MAIN_STATUS == 'failed' || env.WWW_STATUS == 'failed'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const title = '🚨 Broken Links Detected - Scheduled Check';
+          const body = `
+          ## Broken Links Report
+          
+          **Date:** ${new Date().toISOString()}
+          **Check Type:** Scheduled Daily Check
+          
+          ### Issues Found:
+          ${process.env.MAIN_STATUS === 'failed' ? '❌ Main site (prismscope.ai) has broken links' : '✅ Main site OK'}
+          ${process.env.WWW_STATUS === 'failed' ? '❌ WWW site (www.prismscope.ai) has broken links' : '✅ WWW site OK'}
+          
+          ### Next Steps:
+          1. Review the detailed logs in this workflow run
+          2. Fix any broken internal links
+          3. Update or remove broken external references
+          4. Re-run the link checker to verify fixes
+          
+          **Workflow Run:** ${context.payload.repository.html_url}/actions/runs/${context.runId}
+          `;
+          
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: title,
+            body: body,
+            labels: ['bug', 'automated', 'broken-links']
+          });
+
+    - name: Upload detailed reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: scheduled-link-check-reports
+        path: |
+          main-site-check.txt
+          www-site-check.txt
+        retention-days: 30

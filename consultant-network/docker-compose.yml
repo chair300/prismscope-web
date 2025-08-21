@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3004:80"
+    environment:
+      - VITE_API_URL=http://localhost:3003/api
+    depends_on:
+      - backend
+    networks:
+      - consultant-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    environment:
+      - NODE_ENV=production
+      - PORT=3003
+      - COUCHBASE_URL=couchbase://couchbase:11210
+      - COUCHBASE_USERNAME=Administrator
+      - COUCHBASE_PASSWORD=password
+      - COUCHBASE_BUCKET=consultant_network
+    depends_on:
+      - couchbase
+    networks:
+      - consultant-network
+
+  couchbase:
+    image: couchbase:community-7.2.0
+    ports:
+      - "9091:8091"
+      - "9092:8092"
+      - "9093:8093"
+      - "9094:8094"
+      - "11212:11210"
+    volumes:
+      - couchbase-data:/opt/couchbase/var
+    environment:
+      - COUCHBASE_ADMINISTRATOR_USERNAME=Administrator
+      - COUCHBASE_ADMINISTRATOR_PASSWORD=password
+    networks:
+      - consultant-network
+
+volumes:
+  couchbase-data:
+
+networks:
+  consultant-network:
+    driver: bridge

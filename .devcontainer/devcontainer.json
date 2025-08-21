@@ -1,0 +1,177 @@
+{
+  "name": "Prismscope Development Environment",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  
+  // Configure tool-specific properties
+  "customizations": {
+    "vscode": {
+      "settings": {
+        // General settings
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "git.autofetch": true,
+        "git.enableSmartCommit": true,
+        "files.autoSave": "onFocusChange",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        
+        // JavaScript/TypeScript settings
+        "javascript.updateImportsOnFileMove.enabled": "always",
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "emmet.includeLanguages": {
+          "javascript": "javascriptreact"
+        },
+        
+        // Prettier settings
+        "prettier.singleQuote": true,
+        "prettier.semi": false,
+        "prettier.tabWidth": 2,
+        
+        // Tailwind CSS settings
+        "tailwindCSS.includeLanguages": {
+          "javascript": "javascript",
+          "html": "HTML"
+        },
+        "tailwindCSS.experimental.classRegex": [
+          "tw`([^`]*)",
+          ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+        ],
+        
+        // Docker settings
+        "docker.showStartPage": false,
+        
+        // Extensions settings
+        "eslint.workingDirectories": ["."],
+        "npm.enableScriptExplorer": true
+      },
+      
+      "extensions": [
+        // Essential development extensions
+        "ms-vscode.vscode-json",
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        
+        // React and JavaScript
+        "ms-vscode.vscode-eslint",
+        "ms-vscode.vscode-react-native",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        
+        // Docker and Kubernetes
+        "ms-azuretools.vscode-docker",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "googlecloudtools.cloudcode",
+        
+        // Git and GitHub
+        "github.copilot",
+        "github.vscode-pull-request-github",
+        "eamodio.gitlens",
+        
+        // Productivity
+        "ms-vscode.vscode-todo-highlight",
+        "streetsidesoftware.code-spell-checker",
+        "gruntfuggly.todo-tree",
+        "ms-vscode.live-server",
+        
+        // Markdown and documentation
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        
+        // Theme and UI
+        "pkief.material-icon-theme",
+        "github.github-vscode-theme",
+        
+        // Testing and debugging
+        "ms-vscode.vscode-jest",
+        "hbenl.vscode-test-explorer"
+      ]
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally
+  "forwardPorts": [
+    3000,  // Vite dev server
+    8080,  // Production preview
+    8081,  // Alternative port
+    3001   // Backend API (if needed)
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Vite Dev Server",
+      "onAutoForward": "openBrowser"
+    },
+    "8080": {
+      "label": "Production Preview"
+    },
+    "8081": {
+      "label": "Container Test Port"
+    },
+    "3001": {
+      "label": "Backend API"
+    }
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created
+  "postCreateCommand": "npm install && npm run setup:devcontainer",
+
+  // Configure environment variables
+  "containerEnv": {
+    "NODE_ENV": "development",
+    "CHOKIDAR_USEPOLLING": "true",
+    "WATCHPACK_POLLING": "true"
+  },
+
+  // Add the IDs of any additional containers 
+  "initializeCommand": "echo 'Initializing Prismscope dev container...'",
+  
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root
+  "remoteUser": "node",
+  
+  // Features to add to the dev container
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "moby": true,
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "version": "latest",
+      "helm": "latest",
+      "minikube": "none"
+    },
+    "ghcr.io/devcontainers/features/gcloud:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true,
+      "username": "node",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    }
+  },
+
+  // Mounts
+  "mounts": [
+    // Mount Docker socket for Docker-in-Docker
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
+    // Mount for persistent bash history
+    "source=prismscope-bashhistory,target=/home/node/.bash_history,type=volume"
+  ],
+
+  // Additional args to pass to the container
+  "runArgs": [
+    "--network=host"
+  ]
+}

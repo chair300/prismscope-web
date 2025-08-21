@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  prismscope-website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: prismscope-website:latest
+    container_name: prismscope-website
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.prismscope.rule=Host(`prismscope.local`)"
+      - "traefik.http.services.prismscope.loadbalancer.server.port=80"
+    networks:
+      - prismscope-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  prismscope-network:
+    driver: bridge

@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:7-jammy
+    container_name: prismscope-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - prismscope-network
+
+  # Backend API
+  backend:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: prismscope-backend
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PORT=3001
+      - MONGODB_URI=mongodb://admin:password123@mongodb:27017/prismscope_consultants?authSource=admin
+      - JWT_SECRET=your_super_secure_jwt_secret_here_replace_this_in_production
+      - JWT_EXPIRES_IN=7d
+      - STRIPE_PUBLISHABLE_KEY=pk_test_replace_with_your_stripe_publishable_key
+      - STRIPE_SECRET_KEY=sk_test_replace_with_your_stripe_secret_key
+      - STRIPE_WEBHOOK_SECRET=whsec_replace_with_your_stripe_webhook_secret
+      - REGISTRATION_FEE_AMOUNT=9900
+      - EMAIL_FROM=noreply@provoco.ai
+      - EMAIL_FROM_NAME=Prismscope Consultant Network
+      - SMTP_HOST=smtp.gmail.com
+      - SMTP_PORT=587
+      - SMTP_USER=your_gmail@gmail.com
+      - SMTP_PASS=your_app_password
+      - BCRYPT_SALT_ROUNDS=12
+      - RATE_LIMIT_WINDOW_MS=900000
+      - RATE_LIMIT_MAX_REQUESTS=100
+      - FRONTEND_URL=http://localhost:8080
+    volumes:
+      - ./uploads:/app/uploads
+      - ./logs:/app/logs
+    depends_on:
+      - mongodb
+    networks:
+      - prismscope-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  mongodb_data:
+    driver: local
+  mongodb_config:
+    driver: local
+
+networks:
+  prismscope-network:
+    driver: bridge
