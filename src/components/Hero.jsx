@@ -1,4 +1,5 @@
 import { ArrowRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import ProcessFlowchart from './ProcessFlowchart'
 
 const Hero = () => {
@@ -35,9 +36,12 @@ const Hero = () => {
               Start Free Assessment
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>
-            <button className="btn-secondary text-lg">
-              See ROI Examples
-            </button>
+            <Link 
+              to="/example-report" 
+              className="btn-secondary text-lg"
+            >
+              See Example Report
+            </Link>
           </div>
         </div>
       </div>

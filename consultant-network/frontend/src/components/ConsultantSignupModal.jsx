@@ -14,8 +14,8 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
     location: '',
     company: '',
     website: '',
-    linkedIn: '',
-    github: '',
+    linkedInUsername: '',
+    githubUsername: '',
     expertise: [],
     industries: [],
     yearsExperience: '',
@@ -31,6 +31,8 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [validationErrors, setValidationErrors] = useState({})
+  const [partnershipType, setPartnershipType] = useState('expert')
+  const [hasSubmitted, setHasSubmitted] = useState(false)
   const fileInputRef = useRef(null)
   const navigate = useNavigate()
 
@@ -142,34 +144,25 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
   const validateForm = () => {
     const errors = {}
     
-    // Required field validation
-    if (!formData.firstName.trim()) errors.firstName = 'First name is required'
-    if (!formData.lastName.trim()) errors.lastName = 'Last name is required'
-    if (!formData.email.trim()) errors.email = 'Email is required'
-    if (!formData.location.trim()) errors.location = 'Location is required'
-    if (!formData.yearsExperience) errors.yearsExperience = 'Experience level is required'
-    if (formData.expertise.length === 0) errors.expertise = 'Select at least 1 area of expertise (maximum 2)'
-    if (formData.expertise.length > 2) errors.expertise = 'Select maximum 2 areas of expertise'
-    if (formData.industries.length === 0) errors.industries = 'Select at least 1 industry (maximum 3)'
-    if (formData.industries.length > 3) errors.industries = 'Select maximum 3 industries'
+    // Only validate format, not require fields
     
-    // Email validation
+    // Email validation if provided
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (formData.email && !emailRegex.test(formData.email)) {
       errors.email = 'Please enter a valid email address'
     }
     
-    // URL validation
+    // URL validation if provided
     const urlRegex = /^https?:\/\/.+\..+/
     if (formData.website && !urlRegex.test(formData.website)) {
       errors.website = 'Please enter a valid URL (must start with http:// or https://)'
     }
-    if (formData.linkedIn && !urlRegex.test(formData.linkedIn)) {
-      errors.linkedIn = 'Please enter a valid LinkedIn URL'
-    }
-    if (formData.github && !urlRegex.test(formData.github)) {
-      errors.github = 'Please enter a valid GitHub URL'
-    }
+    
+    // Check expertise maximum limit
+    if (formData.expertise.length > 2) errors.expertise = 'Select maximum 2 areas of expertise'
+    
+    // Check industries maximum limit
+    if (formData.industries.length > 3) errors.industries = 'Select maximum 3 industries'
     
     return errors
   }
@@ -191,20 +184,42 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
     setIsSubmitting(true)
     
     try {
-      // Submit consultant application
+      // Get user's IP address
+      let ipAddress = 'unknown'
+      try {
+        const ipResponse = await fetch('https://api.ipify.org?format=json')
+        const ipData = await ipResponse.json()
+        ipAddress = ipData.ip
+      } catch (error) {
+        console.warn('Could not get IP address:', error)
+      }
+      
+      // Submit consultant application with timestamp and IP
       console.log('Submitting application:', formData)
       const response = await apiService.submitConsultantApplication({
         ...formData,
+        linkedIn: formData.linkedInUsername ? `https://linkedin.com/in/${formData.linkedInUsername}` : '',
+        github: formData.githubUsername ? `https://github.com/${formData.githubUsername}` : '',
+        partnershipType,
         oauthProvider,
-        applicationDate: new Date().toISOString()
+        applicationDate: new Date().toISOString(),
+        timestamp: new Date().toISOString(),
+        ipAddress: ipAddress,
+        userAgent: navigator.userAgent,
+        referrer: document.referrer || 'direct'
       })
       
       if (response.success && response.data) {
         console.log('Application submitted successfully:', response.data)
         
-        // Redirect to thank you page with consultant ID
-        navigate(`/thank-you?consultantId=${response.data.consultant._id}`)
-        onClose()
+        // Show thank you state
+        setHasSubmitted(true)
+        
+        // Wait a moment before redirecting
+        setTimeout(() => {
+          navigate(`/thank-you?consultantId=${response.data.consultant._id}`)
+          onClose()
+        }, 3000)
       } else {
         throw new Error(response.message || 'Failed to submit application')
       }
@@ -364,27 +379,169 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
           </div>
         </div>
 
-        {/* Partnership Structure Banner */}
+        {/* Partnership Type Tabs */}
         <div className="bg-gradient-to-r from-primary-50 to-accent-50 p-6 border-b">
-          <div className="grid md:grid-cols-2 gap-6 max-w-lg mx-auto">
-            <div className="flex items-center">
-              <DollarSign className="w-8 h-8 text-primary-600 mr-3" />
-              <div>
-                <p className="font-semibold text-gray-900">Vetting Fee</p>
-                <p className="text-2xl font-bold text-primary-600">$99</p>
+          <div className="text-center mb-6">
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Choose Your Partnership Type</h3>
+            <p className="text-gray-600">Select the partnership model that best fits your organization</p>
+          </div>
+          
+          {/* Tab Navigation */}
+          <div className="flex bg-white rounded-lg p-1 max-w-2xl mx-auto mb-6">
+            <button
+              type="button"
+              onClick={() => setPartnershipType('expert')}
+              className={`flex-1 flex items-center justify-center py-3 px-3 rounded-md text-sm font-medium transition-colors ${
+                partnershipType === 'expert'
+                  ? 'bg-primary-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Users className="w-4 h-4 mr-2" />
+              Expert Network
+            </button>
+            <button
+              type="button"
+              onClick={() => setPartnershipType('channel')}
+              className={`flex-1 flex items-center justify-center py-3 px-3 rounded-md text-sm font-medium transition-colors ${
+                partnershipType === 'channel'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Briefcase className="w-4 h-4 mr-2" />
+              Channel Partner
+            </button>
+            <button
+              type="button"
+              onClick={() => setPartnershipType('solution')}
+              className={`flex-1 flex items-center justify-center py-3 px-3 rounded-md text-sm font-medium transition-colors ${
+                partnershipType === 'solution'
+                  ? 'bg-green-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              <Star className="w-4 h-4 mr-2" />
+              Solution Provider
+            </button>
+          </div>
+
+          {/* Tab Content */}
+          <div className="max-w-lg mx-auto">
+            {partnershipType === 'expert' ? (
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <div className="text-center mb-4">
+                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Users className="w-6 h-6 text-primary-600" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Expert Consultant Network</h4>
+                  <p className="text-gray-600 mb-4">For individual consultants and specialized firms</p>
+                </div>
+                
+                {/* Two Tracks */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-2">
+                        <svg className="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      </div>
+                      <h5 className="font-semibold text-gray-900 text-sm">Builders/Engineers</h5>
+                    </div>
+                    <p className="text-xs text-gray-600">Technical implementation specialists, AI/ML engineers, automation developers</p>
+                  </div>
+                  
+                  <div className="bg-gray-50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-2">
+                        <Users className="w-4 h-4 text-green-600" />
+                      </div>
+                      <h5 className="font-semibold text-gray-900 text-sm">Organizational Experts</h5>
+                    </div>
+                    <p className="text-xs text-gray-600">Traditional consultants, change management, process optimization specialists</p>
+                  </div>
+                </div>
+                
+                <div className="space-y-2 text-sm text-gray-700 mb-4">
+                  <p>• Pre-qualified leads with completed assessments</p>
+                  <p>• Clear project scope and ROI calculations</p>
+                  <p>• Premium project fees for AI implementations</p>
+                  <p>• Ongoing support from Prismscope team</p>
+                </div>
+                <div className="bg-primary-50 rounded-lg p-3">
+                  <p className="text-primary-800 font-semibold">One-time $99 vetting fee</p>
+                  <p className="text-primary-600 text-sm">Background verification & network onboarding</p>
+                </div>
               </div>
-            </div>
-            <div className="flex items-center">
-              <Briefcase className="w-8 h-8 text-blue-600 mr-3" />
-              <div>
-                <p className="font-semibold text-gray-900">Channel Partner</p>
-                <p className="text-lg font-bold text-blue-600">Commission</p>
+            ) : partnershipType === 'channel' ? (
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Briefcase className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Strategic Channel Partner</h4>
+                  <p className="text-gray-600 mb-4">For technology vendors, system integrators, and solution providers</p>
+                  <div className="space-y-2 text-sm text-gray-700 mb-4">
+                    <p>• Resell Prismscope services with attractive margins and client tracking keys</p>
+                    <p>• Receive qualified referrals for your solutions</p>
+                    <p>• Bi-directional revenue sharing model</p>
+                    <p>• Mutual growth through strategic partnership</p>
+                  </div>
+                  <div className="bg-blue-50 rounded-lg p-3">
+                    <p className="text-blue-800 font-semibold">Revenue sharing program</p>
+                    <p className="text-blue-600 text-sm">Custom partnership terms available</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            ) : (
+              <div className="bg-white rounded-lg p-6 shadow-sm">
+                <div className="text-center">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Star className="w-6 h-6 text-green-600" />
+                  </div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-2">Solution Provider Program</h4>
+                  <p className="text-gray-600 mb-4">For technology vendors and specialized solution providers</p>
+                  <div className="space-y-2 text-sm text-gray-700 mb-4">
+                    <p>• Featured product recommendations to qualified clients</p>
+                    <p>• Pre-assessed clients with validated use cases</p>
+                    <p>• Co-marketing and joint go-to-market strategies</p>
+                    <p>• Expert consultant support for implementations</p>
+                  </div>
+                  <div className="bg-green-50 rounded-lg p-3">
+                    <p className="text-green-800 font-semibold">Partnership program</p>
+                    <p className="text-green-600 text-sm">Best fit for AI/ML platforms and automation tools</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Form */}
+        {/* Thank You State */}
+        {hasSubmitted ? (
+          <div className="p-12 text-center">
+            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <CheckCircle className="w-10 h-10 text-green-600" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">Thank You for Your Application!</h2>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              We've received your application and will review it shortly. 
+              You'll receive an email confirmation within the next 24-48 hours.
+            </p>
+            <div className="bg-primary-50 rounded-lg p-6 max-w-lg mx-auto">
+              <h3 className="font-semibold text-gray-900 mb-2">What happens next?</h3>
+              <div className="space-y-2 text-sm text-gray-700 text-left">
+                <p>• Our team will review your application</p>
+                <p>• If approved, you'll receive an onboarding email</p>
+                <p>• You'll get access to our consultant dashboard</p>
+                <p>• Start receiving matched opportunities immediately</p>
+              </div>
+            </div>
+            <p className="text-sm text-gray-500 mt-6">Redirecting to confirmation page...</p>
+          </div>
+        ) : (
+        /* Form */
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Personal Information */}
           <div>
@@ -399,14 +556,13 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  First Name *
+                  First Name
                 </label>
                 <input
                   type="text"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  required
                   className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
                     validationErrors.firstName ? 'border-red-300 bg-red-50' :
                     populatedFields.includes('firstName') ? 'border-green-300 bg-green-50' : 'border-gray-300'
@@ -418,14 +574,13 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Last Name *
+                  Last Name
                 </label>
                 <input
                   type="text"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  required
                   className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
                     validationErrors.lastName ? 'border-red-300 bg-red-50' :
                     populatedFields.includes('lastName') ? 'border-green-300 bg-green-50' : 'border-gray-300'
@@ -437,14 +592,13 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Email *
+                  Email
                 </label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  required
                   className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
                     populatedFields.includes('email') ? 'border-green-300 bg-green-50' : 'border-gray-300'
                   }`}
@@ -464,14 +618,13 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Location (City, Country) *
+                  Location (City, Country)
                 </label>
                 <input
                   type="text"
                   name="location"
                   value={formData.location}
                   onChange={handleInputChange}
-                  required
                   placeholder="e.g., New York, USA"
                   className={`w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
                     populatedFields.includes('location') ? 'border-green-300 bg-green-50' : 'border-gray-300'
@@ -514,37 +667,46 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   LinkedIn Profile
                 </label>
-                <input
-                  type="url"
-                  name="linkedIn"
-                  value={formData.linkedIn}
-                  onChange={handleInputChange}
-                  placeholder="https://linkedin.com/in/"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                />
+                <div className="flex">
+                  <span className="inline-flex items-center px-3 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-md">
+                    linkedin.com/in/
+                  </span>
+                  <input
+                    type="text"
+                    name="linkedInUsername"
+                    value={formData.linkedInUsername}
+                    onChange={handleInputChange}
+                    placeholder="username"
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-r-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  />
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   GitHub Profile
                 </label>
-                <input
-                  type="url"
-                  name="github"
-                  value={formData.github}
-                  onChange={handleInputChange}
-                  placeholder="https://github.com/"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-                />
+                <div className="flex">
+                  <span className="inline-flex items-center px-3 border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm rounded-l-md">
+                    github.com/
+                  </span>
+                  <input
+                    type="text"
+                    name="githubUsername"
+                    value={formData.githubUsername}
+                    onChange={handleInputChange}
+                    placeholder="username"
+                    className="flex-1 px-3 py-2 border border-gray-300 rounded-r-md focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                  />
+                </div>
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Years of Experience *
+                  Years of Experience
                 </label>
                 <select
                   name="yearsExperience"
                   value={formData.yearsExperience}
                   onChange={handleInputChange}
-                  required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 >
                   <option value="">Select...</option>
@@ -560,7 +722,7 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
           {/* Expertise Areas */}
           <div>
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Areas of Expertise * <span className="text-sm font-normal text-gray-600">(Select up to 2)</span>
+              Areas of Expertise <span className="text-sm font-normal text-gray-600">(Select up to 2)</span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               {expertiseOptions.map(option => {
@@ -588,7 +750,7 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
           {/* Industry Experience */}
           <div>
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
-              Industry Experience * <span className="text-sm font-normal text-gray-600">(Select up to 3)</span>
+              Industry Experience <span className="text-sm font-normal text-gray-600">(Select up to 3)</span>
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
               {industryOptions.map(option => {
@@ -773,6 +935,7 @@ const ConsultantSignupModal = ({ isOpen, onClose }) => {
             </div>
           </div>
         </form>
+        )}
       </div>
     </div>
   )

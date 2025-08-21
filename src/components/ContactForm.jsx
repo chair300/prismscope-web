@@ -135,7 +135,7 @@ const ContactForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors text-gray-900 placeholder-gray-500 ${
                 errors.name ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="John Doe"
@@ -155,7 +155,7 @@ const ContactForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors ${
+              className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors text-gray-900 placeholder-gray-500 ${
                 errors.email ? 'border-red-500' : 'border-gray-300'
               }`}
               placeholder="john@company.com"
@@ -177,7 +177,7 @@ const ContactForm = () => {
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors text-gray-900 placeholder-gray-500"
               placeholder="Acme Corp"
             />
           </div>
@@ -192,7 +192,7 @@ const ContactForm = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors text-gray-900 placeholder-gray-500"
               placeholder="+1 (555) 123-4567"
             />
           </div>
@@ -207,7 +207,7 @@ const ContactForm = () => {
             name="interest"
             value={formData.interest}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors text-gray-900 bg-white"
           >
             {interestOptions.map(option => (
               <option key={option.value} value={option.value}>
@@ -227,7 +227,7 @@ const ContactForm = () => {
             value={formData.message}
             onChange={handleChange}
             rows={5}
-            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-none ${
+            className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors resize-none text-gray-900 placeholder-gray-500 ${
               errors.message ? 'border-red-500' : 'border-gray-300'
             }`}
             placeholder="Tell us about your automation challenges and goals..."

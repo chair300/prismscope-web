@@ -16,7 +16,7 @@ const Contact = () => {
             <span className="text-accent-300">With Expert Implementation</span>
           </h2>
           <p className="text-xl text-primary-100 max-w-3xl mx-auto mb-8">
-            Get matched with pre-vetted consultants who have successfully deployed similar projects. 
+            Get matched with elite consultants who have successfully deployed similar projects. 
             Turn your organizational insights into actionable implementation plans with proven experts.
           </p>
         </div>

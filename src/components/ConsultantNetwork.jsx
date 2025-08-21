@@ -12,16 +12,15 @@ const ConsultantNetwork = () => {
             Join Our Expert Network
           </div>
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Become a Prismscope
+            Partner with Prismscope
             <br />
             <span className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              AI Consultant
+              Two Ways to Collaborate
             </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Join our network of pre-vetted AI and organizational transformation experts. 
-            Help organizations implement automation solutions while earning significant revenue 
-            from high-value consulting engagements.
+            Join our network of elite AI and organizational transformation experts. 
+            Help organizations implement automation solutions and drive meaningful change.
           </p>
         </div>
 
@@ -66,78 +65,125 @@ const ConsultantNetwork = () => {
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Partnership Models</h2>
             <p className="text-lg text-gray-600">
-              Strategic partnerships that create mutual value through service reselling and solution recommendations
+              Two distinct pathways to join the Prismscope ecosystem and drive mutual growth
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <div className="bg-white rounded-xl p-6 text-center">
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">One-Time Vetting Fee</h4>
-              <div className="text-3xl font-bold text-primary-600 mb-2">$99</div>
-              <p className="text-sm text-gray-600">
-                Covers background verification, portfolio review, and network onboarding
-              </p>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Expert Consultant Network */}
+            <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-8 h-8 text-primary-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Expert Consultant Network</h3>
+                <p className="text-gray-600">For individual consultants and specialized firms</p>
+              </div>
+              
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Two Specialized Tracks:</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="bg-blue-50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-2">
+                        <Zap className="w-4 h-4 text-blue-600" />
+                      </div>
+                      <h5 className="font-semibold text-gray-900 text-sm">Builders/Engineers</h5>
+                    </div>
+                    <p className="text-xs text-gray-600">Technical implementation specialists, AI/ML engineers, automation developers</p>
+                  </div>
+                  
+                  <div className="bg-green-50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-2">
+                        <Users className="w-4 h-4 text-green-600" />
+                      </div>
+                      <h5 className="font-semibold text-gray-900 text-sm">Organizational Experts</h5>
+                    </div>
+                    <p className="text-xs text-gray-600">Traditional consultants, change management, process optimization specialists</p>
+                  </div>
+                </div>
+                
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">What You Get:</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Pre-qualified leads with completed organizational assessments</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Clear project scope, ROI calculations, and implementation roadmaps</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Premium project fees reflecting the high-value nature of AI implementations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Ongoing support and resources from the Prismscope team</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="text-center bg-primary-50 rounded-lg p-4">
+                <p className="text-primary-800 font-semibold">One-time $99 vetting fee</p>
+                <p className="text-primary-600 text-sm">Background verification, portfolio review, and network onboarding</p>
+              </div>
             </div>
 
-            <div className="bg-white rounded-xl p-6 text-center border-2 border-blue-200">
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">Channel Partner</h4>
-              <div className="text-3xl font-bold text-blue-600 mb-2">Revenue Share</div>
-              <p className="text-sm text-gray-600">
-                Earn commissions by recommending tools and products to clients
-              </p>
+            {/* Strategic Channel Partner Program */}
+            <div className="bg-white rounded-xl p-8 shadow-sm border-2 border-blue-200">
+              <div className="text-center mb-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Briefcase className="w-8 h-8 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Strategic Partner Program</h3>
+                <p className="text-gray-600">For technology vendors, system integrators, and solution providers</p>
+              </div>
+              
+              <div className="mb-6">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Bi-Directional Revenue Model:</h4>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700"><strong>Resell Prismscope Services:</strong> White-label our automation discovery platform with attractive margins and unique client tracking keys</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700"><strong>Receive Qualified Referrals:</strong> We recommend your products and services when they align with client needs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700"><strong>Mutual Growth:</strong> Earn from Prismscope resales while we drive implementation business to you</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700"><strong>Product Recommendations:</strong> We recommend your solutions when they match identified client needs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700"><strong>Co-Marketing:</strong> Joint go-to-market strategies and collaborative sales efforts</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="bg-blue-50 rounded-lg p-4">
+                <h5 className="font-semibold text-blue-900 mb-2">Ideal Partners:</h5>
+                <ul className="text-blue-800 text-sm space-y-1">
+                  <li>• Technology vendors with complementary automation tools</li>
+                  <li>• System integrators seeking differentiated service offerings</li>
+                  <li>• Solution providers looking to expand their AI capabilities</li>
+                  <li>• AI/ML platforms and automation tool providers</li>
+                  <li>• Data analytics and business intelligence solutions</li>
+                  <li>• Workflow automation and process optimization software vendors</li>
+                  <li>• Industry-specific AI application providers</li>
+                </ul>
+              </div>
             </div>
+
           </div>
         </div>
 
-        {/* Channel Partner Program */}
-        <div className="bg-blue-50 rounded-2xl p-8 mb-12 border border-blue-200">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Strategic Channel Partner Program</h2>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto">
-              Join our ecosystem where technology partners and solution providers work together. 
-              Partners resell Prismscope services while we recommend their products and implementation services to clients.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <Star className="w-6 h-6 text-blue-600" />
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">Resell Prismscope Services</h4>
-              <p className="text-gray-600 text-sm">
-                White-label and resell our automation discovery platform to your clients with attractive margins and ongoing support.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <Briefcase className="w-6 h-6 text-green-600" />
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">Solution Recommendations</h4>
-              <p className="text-gray-600 text-sm">
-                We recommend your products and implementation services to clients when they align with identified automation opportunities.
-              </p>
-            </div>
-
-            <div className="bg-white rounded-xl p-6 shadow-sm">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <DollarSign className="w-6 h-6 text-purple-600" />
-              </div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-2">Mutual Revenue Growth</h4>
-              <p className="text-gray-600 text-sm">
-                Bi-directional revenue sharing: earn from Prismscope resales while we drive implementation business to you.
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center mt-8">
-            <p className="text-sm text-blue-700 bg-blue-100 rounded-lg p-4 max-w-3xl mx-auto">
-              <strong>Strategic Partnership:</strong> We're looking for technology vendors, system integrators, 
-              and solution providers who want to both leverage and complement our automation discovery platform.
-            </p>
-          </div>
-        </div>
 
         {/* What We're Looking For */}
         <div className="bg-white rounded-2xl p-8 mb-12 shadow-sm border border-gray-200">

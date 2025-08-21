@@ -1,0 +1,173 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    autopilot.gke.io/resource-adjustment: '{"input":{"containers":[{"limits":{"cpu":"200m","memory":"256Mi"},"requests":{"cpu":"50m","memory":"64Mi"},"name":"prismscope-website"}]},"output":{"containers":[{"limits":{"cpu":"200m","ephemeral-storage":"1Gi","memory":"256Mi"},"requests":{"cpu":"50m","ephemeral-storage":"1Gi","memory":"64Mi"},"name":"prismscope-website"}]},"computeClassAtAdmission":"Default","modified":true}'
+    autopilot.gke.io/warden-version: 33.30.0-gke.4
+    deployment.kubernetes.io/revision: "23"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"prismscope-website","app.kubernetes.io/component":"frontend","app.kubernetes.io/instance":"prismscope-website","app.kubernetes.io/name":"prismscope-website","app.kubernetes.io/part-of":"prismscope-platform","app.kubernetes.io/version":"1.0.0","tier":"frontend"},"name":"prismscope-website","namespace":"external-web"},"spec":{"replicas":2,"selector":{"matchLabels":{"app":"prismscope-website","app.kubernetes.io/component":"frontend","app.kubernetes.io/instance":"prismscope-website","app.kubernetes.io/name":"prismscope-website","app.kubernetes.io/part-of":"prismscope-platform","app.kubernetes.io/version":"1.0.0","tier":"frontend"}},"strategy":{"rollingUpdate":{"maxSurge":1,"maxUnavailable":0},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"app":"prismscope-website","app.kubernetes.io/component":"frontend","app.kubernetes.io/instance":"prismscope-website","app.kubernetes.io/name":"prismscope-website","app.kubernetes.io/part-of":"prismscope-platform","app.kubernetes.io/version":"1.0.0","tier":"frontend"}},"spec":{"containers":[{"env":[{"name":"NODE_ENV","value":"production"}],"image":"gcr.io/ai-problem-statement/prismscope-website:latest","imagePullPolicy":"Always","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":"http"},"initialDelaySeconds":30,"periodSeconds":10,"timeoutSeconds":5},"name":"prismscope-website","ports":[{"containerPort":8080,"name":"http","protocol":"TCP"}],"readinessProbe":{"failureThreshold":2,"httpGet":{"path":"/health","port":"http"},"initialDelaySeconds":5,"periodSeconds":5,"timeoutSeconds":3},"resources":{"limits":{"cpu":"200m","memory":"256Mi"},"requests":{"cpu":"50m","memory":"64Mi"}},"securityContext":{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsGroup":1001,"runAsNonRoot":true,"runAsUser":1001},"volumeMounts":[{"mountPath":"/tmp","name":"tmp-volume"},{"mountPath":"/tmp/nginx","name":"tmp-nginx-volume"},{"mountPath":"/var/cache/nginx","name":"var-cache-nginx"},{"mountPath":"/var/log/nginx","name":"var-log-nginx"},{"mountPath":"/var/run","name":"var-run"}]}],"nodeSelector":{"kubernetes.io/os":"linux"},"securityContext":{"fsGroup":1001,"runAsGroup":1001,"runAsNonRoot":true,"runAsUser":1001,"seccompProfile":{"type":"RuntimeDefault"}},"terminationGracePeriodSeconds":30,"volumes":[{"emptyDir":{},"name":"tmp-volume"},{"emptyDir":{},"name":"tmp-nginx-volume"},{"emptyDir":{},"name":"var-cache-nginx"},{"emptyDir":{},"name":"var-log-nginx"},{"emptyDir":{},"name":"var-run"}]}}}}
+  creationTimestamp: "2025-08-20T18:22:34Z"
+  generation: 23
+  labels:
+    app: prismscope-website
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/instance: prismscope-website
+    app.kubernetes.io/name: prismscope-website
+    app.kubernetes.io/part-of: prismscope-platform
+    app.kubernetes.io/version: 1.0.0
+    tier: frontend
+  name: prismscope-website
+  namespace: external-web
+  resourceVersion: "1755757907871135000"
+  uid: 3c30fccb-a8e5-4eb3-aeb2-4230d37c3e78
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: prismscope-website
+      app.kubernetes.io/component: frontend
+      app.kubernetes.io/instance: prismscope-website
+      app.kubernetes.io/name: prismscope-website
+      app.kubernetes.io/part-of: prismscope-platform
+      app.kubernetes.io/version: 1.0.0
+      tier: frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/restartedAt: "2025-08-21T02:31:47-04:00"
+      creationTimestamp: null
+      labels:
+        app: prismscope-website
+        app.kubernetes.io/component: frontend
+        app.kubernetes.io/instance: prismscope-website
+        app.kubernetes.io/name: prismscope-website
+        app.kubernetes.io/part-of: prismscope-platform
+        app.kubernetes.io/version: 1.0.0
+        tier: frontend
+    spec:
+      containers:
+      - env:
+        - name: NODE_ENV
+          value: production
+        image: gcr.io/ai-problem-statement/prismscope-website:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: prismscope-website
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 2
+          httpGet:
+            path: /health
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 3
+        resources:
+          limits:
+            cpu: 200m
+            ephemeral-storage: 1Gi
+            memory: 256Mi
+          requests:
+            cpu: 50m
+            ephemeral-storage: 1Gi
+            memory: 64Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          readOnlyRootFilesystem: true
+          runAsGroup: 1001
+          runAsNonRoot: true
+          runAsUser: 1001
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /tmp
+          name: tmp-volume
+        - mountPath: /tmp/nginx
+          name: tmp-nginx-volume
+        - mountPath: /var/cache/nginx
+          name: var-cache-nginx
+        - mountPath: /var/log/nginx
+          name: var-log-nginx
+        - mountPath: /var/run
+          name: var-run
+        - mountPath: /app/serviceAccountKey.json
+          name: firestore-key
+          subPath: serviceAccountKey.json
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      nodeSelector:
+        kubernetes.io/os: linux
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 1001
+        runAsGroup: 1001
+        runAsNonRoot: true
+        runAsUser: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      terminationGracePeriodSeconds: 30
+      tolerations:
+      - effect: NoSchedule
+        key: kubernetes.io/arch
+        operator: Equal
+        value: amd64
+      volumes:
+      - emptyDir: {}
+        name: tmp-volume
+      - emptyDir: {}
+        name: tmp-nginx-volume
+      - emptyDir: {}
+        name: var-cache-nginx
+      - emptyDir: {}
+        name: var-log-nginx
+      - emptyDir: {}
+        name: var-run
+      - name: firestore-key
+        secret:
+          secretName: firestore-key
+status:
+  availableReplicas: 2
+  conditions:
+  - lastTransitionTime: "2025-08-20T19:01:28Z"
+    lastUpdateTime: "2025-08-20T19:01:28Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2025-08-20T19:01:10Z"
+    lastUpdateTime: "2025-08-21T06:31:47Z"
+    message: ReplicaSet "prismscope-website-84bb4786fc" is progressing.
+    reason: ReplicaSetUpdated
+    status: "True"
+    type: Progressing
+  observedGeneration: 23
+  readyReplicas: 2
+  replicas: 3
+  unavailableReplicas: 1
+  updatedReplicas: 1
