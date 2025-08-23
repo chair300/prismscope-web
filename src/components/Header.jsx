@@ -29,7 +29,6 @@ const Header = () => {
                 <Link to="/#pricing" className="text-gray-600 hover:text-primary-600 transition-colors">Pricing</Link>
               </>
             )}
-            <Link to="/consultant-network" className="text-gray-600 hover:text-primary-600 transition-colors">Consultant Network</Link>
             {isHomePage ? (
               <a href="#contact" className="text-gray-600 hover:text-primary-600 transition-colors">Contact</a>
             ) : (
@@ -65,8 +64,7 @@ const Header = () => {
                   <Link to="/#pricing" className="text-gray-600 hover:text-primary-600 transition-colors">Pricing</Link>
                 </>
               )}
-              <Link to="/consultant-network" className="text-gray-600 hover:text-primary-600 transition-colors">Consultant Network</Link>
-              {isHomePage ? (
+                {isHomePage ? (
                 <a href="#contact" className="text-gray-600 hover:text-primary-600 transition-colors">Contact</a>
               ) : (
                 <Link to="/#contact" className="text-gray-600 hover:text-primary-600 transition-colors">Contact</Link>

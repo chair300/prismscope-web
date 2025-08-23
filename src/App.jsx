@@ -4,7 +4,6 @@ import HomePage from './components/HomePage'
 import OAuthCallback from './components/OAuthCallback'
 import ThankYouPage from './components/ThankYouPage'
 import ExampleReport from './components/ExampleReport'
-import ConsultantNetwork from './components/ConsultantNetwork'
 import Footer from './components/Footer'
 
 function App() {
@@ -18,7 +17,6 @@ function App() {
             <Route path="/auth/:provider/callback" element={<OAuthCallback />} />
             <Route path="/thank-you" element={<ThankYouPage />} />
             <Route path="/example-report" element={<ExampleReport />} />
-            <Route path="/consultant-network" element={<ConsultantNetwork />} />
           </Routes>
         </main>
         <Footer />

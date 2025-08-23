@@ -8,8 +8,6 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 // Import routes
-const consultantRoutes = require('./routes/consultants')
-const paymentRoutes = require('./routes/payments')
 const authRoutes = require('./routes/auth')
 const uploadRoutes = require('./routes/upload')
 const contactRoutes = require('./routes/contact')
@@ -88,12 +86,7 @@ if (process.env.NODE_ENV === 'production') {
 app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true, limit: '10mb' }))
 
-// Stripe webhook endpoint (must be before express.json middleware)
-app.use('/api/payments/webhook', express.raw({ type: 'application/json' }))
-
 // Routes
-app.use('/api/consultants', consultantRoutes)
-app.use('/api/payments', paymentRoutes)
 app.use('/api/auth', authRoutes)
 app.use('/api/upload', uploadRoutes)
 app.use('/api/contact', contactRoutes)
@@ -106,8 +99,7 @@ app.get('/health', (req, res) => {
     environment: process.env.NODE_ENV,
     version: '1.0.0',
     services: {
-      database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected',
-      stripe: process.env.STRIPE_SECRET_KEY ? 'configured' : 'not configured'
+      database: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
     }
   })
 })
