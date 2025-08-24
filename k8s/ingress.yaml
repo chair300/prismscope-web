@@ -9,9 +9,6 @@ metadata:
     # Let's Encrypt cert-manager annotations
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     acme.cert-manager.io/http01-edit-in-place: "true"
-    
-    # GKE ingress annotations
-    kubernetes.io/ingress.global-static-ip-name: "prismscope-website-static-ip"
 
 spec:
   # TLS configuration with Let's Encrypt
