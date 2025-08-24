@@ -18,24 +18,35 @@ const DemoIntegrated = () => {
   })
   const navigate = useNavigate()
 
-  // Scroll to top when component mounts
+  // Scroll to top when component mounts or section changes
   useEffect(() => {
-    window.scrollTo(0, 0)
+    // Use setTimeout to ensure DOM is ready and override any browser scroll restoration
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }, 0)
   }, [])
 
-  // Update activeView when URL parameter changes
+  // Update activeView when URL parameter changes and scroll to top
   useEffect(() => {
     if (section && ['chat', 'discoveries', 'insights', 'admin'].includes(section)) {
       setActiveView(section)
     } else if (!section) {
       setActiveView('chat')
     }
+    // Scroll to top when section changes
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }, 0)
   }, [section])
 
   // Handle navigation
   const handleSectionChange = (newSection) => {
     setActiveView(newSection)
     navigate(`/demo/${newSection}`)
+    // Scroll to top when changing sections within demo
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
+    }, 0)
   }
 
 
