@@ -65,6 +65,7 @@ const Header = () => {
                 <Link to="/#pricing" className="text-gray-600 hover:text-primary-600 transition-colors">Pricing</Link>
               </>
             )}
+            <Link to="/demo" className="text-gray-600 hover:text-primary-600 transition-colors">Demo</Link>
             {isHomePage ? (
               <a href="#contact" className="text-gray-600 hover:text-primary-600 transition-colors">Contact</a>
             ) : (
@@ -113,7 +114,8 @@ const Header = () => {
                   <Link to="/#pricing" className="text-gray-600 hover:text-primary-600 transition-colors">Pricing</Link>
                 </>
               )}
-                {isHomePage ? (
+              <Link to="/demo" className="text-gray-600 hover:text-primary-600 transition-colors" onClick={() => setIsMenuOpen(false)}>Demo</Link>
+              {isHomePage ? (
                 <a href="#contact" className="text-gray-600 hover:text-primary-600 transition-colors">Contact</a>
               ) : (
                 <Link to="/#contact" className="text-gray-600 hover:text-primary-600 transition-colors">Contact</Link>

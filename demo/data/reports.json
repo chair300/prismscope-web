@@ -1,0 +1,117 @@
+[
+  {
+    "id": "report::report_001",
+    "type": "report",
+    "reportId": "report_001",
+    "userEmail": "demo@example.com",
+    "title": "Organizational Optimization Analysis Report",
+    "createdAt": "2024-08-20T15:00:00.000Z",
+    "executiveSummary": {
+      "totalIssuesAnalyzed": 4,
+      "technicalIssues": 2,
+      "organizationalIssues": 2,
+      "estimatedAnnualSavings": 90000,
+      "priorityDistribution": {
+        "high": 3,
+        "medium": 1,
+        "low": 0
+      },
+      "organizationalHealthScore": 65,
+      "recommendedActions": 3
+    },
+    "detailedAnalysis": {
+      "technicalFindings": {
+        "summary": "Two major technical automation opportunities identified with combined annual savings potential of $90K",
+        "issues": [
+          {
+            "title": "Invoice Processing Automation",
+            "priority": "High",
+            "annualSavings": 30000,
+            "implementationComplexity": "Medium"
+          },
+          {
+            "title": "Support System Integration",
+            "priority": "High",
+            "annualSavings": 60000,
+            "implementationComplexity": "Medium"
+          }
+        ]
+      },
+      "organizationalFindings": {
+        "summary": "Critical communication and process alignment issues affecting customer satisfaction and team morale",
+        "issues": [
+          {
+            "title": "Marketing-Development Alignment",
+            "priority": "High",
+            "businessRisk": "Customer churn and revenue loss"
+          },
+          {
+            "title": "Support Training Standardization",
+            "priority": "Medium",
+            "businessRisk": "Inconsistent customer experience"
+          }
+        ]
+      },
+      "organizationalHealth": {
+        "overallScore": 65,
+        "dimensions": {
+          "teamMorale": {
+            "score": 45,
+            "status": "Needs Attention",
+            "evidence": "Multiple mentions of frustration and low satisfaction"
+          },
+          "processMaturity": {
+            "score": 40,
+            "status": "Ad-hoc",
+            "evidence": "Most processes are informal and vary by individual"
+          },
+          "changeReadiness": {
+            "score": 75,
+            "status": "Ready",
+            "evidence": "Teams recognize problems and eager for solutions"
+          },
+          "decisionSpeed": {
+            "score": 60,
+            "status": "Moderate",
+            "evidence": "Some clear authority, some bottlenecks"
+          },
+          "resourceAvailability": {
+            "score": 70,
+            "status": "Adequate",
+            "evidence": "ROI justifies most improvements"
+          },
+          "customerImpact": {
+            "score": 35,
+            "status": "Severe",
+            "evidence": "Multiple customer satisfaction issues identified"
+          }
+        }
+      }
+    },
+    "recommendations": {
+      "immediate": [
+        "Implement invoice processing automation (30-day ROI)",
+        "Establish weekly marketing-development alignment meetings",
+        "Create unified support ticket system"
+      ],
+      "quarterOneActions": [
+        "Deploy OCR-based invoice processing system",
+        "Document and standardize support procedures",
+        "Implement cross-team feature planning process"
+      ],
+      "ongoingOptimizations": [
+        "Monitor and optimize automated workflows",
+        "Quarterly team alignment reviews",
+        "Continuous process improvement initiatives"
+      ]
+    },
+    "metadata": {
+      "generatedBy": "Prism AI Consultant",
+      "analysisVersion": "2.1",
+      "dataPoints": 4,
+      "conversationSources": 3,
+      "confidence": "High"
+    },
+    "updatedAt": "2024-08-20T15:00:00.000Z"
+  }
+]

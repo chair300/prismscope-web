@@ -1,0 +1,24 @@
+[
+  {
+    "id": "user::demo_user_12345",
+    "type": "user",
+    "uid": "demo_user_12345",
+    "email": "demo@example.com",
+    "name": "Demo User",
+    "organization": "Example Company",
+    "role": "Operations Manager",
+    "createdAt": "2024-08-01T12:00:00.000Z",
+    "updatedAt": "2024-08-20T15:00:00.000Z",
+    "preferences": {
+      "theme": "light",
+      "notifications": true,
+      "reportFormat": "comprehensive"
+    },
+    "stats": {
+      "totalSessions": 3,
+      "totalIssues": 4,
+      "totalReports": 1,
+      "avgSessionLength": 18
+    }
+  }
+]

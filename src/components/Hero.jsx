@@ -40,8 +40,14 @@ const Hero = () => {
               <ArrowRight className="w-5 h-5 ml-2" />
             </button>
             <Link 
-              to="/example-report" 
+              to="/demo" 
               className="btn-secondary text-lg"
+            >
+              Try Interactive Demo
+            </Link>
+            <Link 
+              to="/example-report" 
+              className="text-primary-600 hover:text-primary-700 underline text-lg font-semibold"
             >
               See Example Report
             </Link>

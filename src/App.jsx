@@ -8,6 +8,7 @@ import ExecutivesPage from './components/ExecutivesPage'
 import HRPage from './components/HRPage'
 import ContinuousImprovementsPage from './components/ContinuousImprovementsPage'
 import OperationsPage from './components/OperationsPage'
+import DemoIntegrated from './components/DemoIntegrated'
 import Footer from './components/Footer'
 
 function App() {
@@ -22,6 +23,8 @@ function App() {
             <Route path="/hr" element={<HRPage />} />
             <Route path="/continuous-improvements" element={<ContinuousImprovementsPage />} />
             <Route path="/operations" element={<OperationsPage />} />
+            <Route path="/demo" element={<DemoIntegrated />} />
+            <Route path="/demo/:section" element={<DemoIntegrated />} />
             <Route path="/auth/:provider/callback" element={<OAuthCallback />} />
             <Route path="/thank-you" element={<ThankYouPage />} />
             <Route path="/example-report" element={<ExampleReport />} />

@@ -1,0 +1,222 @@
+[
+  {
+    "id": "issue::issue_001",
+    "type": "issue",
+    "issueId": "issue_001",
+    "sessionId": "session_001",
+    "userAuth": {
+      "uid": "demo_user_12345",
+      "email": "demo@example.com",
+      "name": "Demo User"
+    },
+    "statement": "Manual invoice processing requiring 50+ hours monthly with frequent data entry errors",
+    "category": "technical",
+    "priority": "high",
+    "status": "analyzed",
+    "timestamp": 1755713815603,
+    "analysis": {
+      "rootCause": "Manual data entry from inconsistent invoice formats across multiple vendors",
+      "technicalAnalysis": "TECHNICAL - This is a clear workflow automation and data processing challenge. The manual handoffs and data entry can be systematized through OCR document processing and ERP integration.",
+      "actionableProblemStatement": "Implement automated invoice processing system to reduce manual data entry from 50 hours/month to under 5 hours/month while eliminating duplicate payment errors",
+      "quantifiedBusinessImpact": {
+        "currentCost": "50 hours/month staff time ($2,500), duplicate payments, vendor relationship issues",
+        "frequency": "200 invoices/month requiring manual processing",
+        "businessValue": "$30K annual savings + improved vendor relationships + staff satisfaction"
+      },
+      "successMetrics": [
+        {
+          "metric": "Manual processing time",
+          "current": "50 hours/month",
+          "target": "5 hours/month"
+        },
+        {
+          "metric": "Data entry errors",
+          "current": "Multiple errors weekly",
+          "target": "< 1 error per month"
+        }
+      ],
+      "implementationRoadmap": [
+        "Evaluate OCR and document processing solutions",
+        "Set up automated email ingestion workflow",
+        "Integrate with existing ERP system",
+        "Train team on exception handling"
+      ],
+      "organizationalHealthIndicators": {
+        "teamMorale": "Low - staff frustration with repetitive work",
+        "processMaturity": "Ad-hoc - no standardized workflow",
+        "changeReadiness": "Ready - eager for automation",
+        "decisionSpeed": "Moderate - clear business case",
+        "resourceAvailability": "Adequate - ROI justifies investment",
+        "customerImpact": "Moderate - vendor relationship strain"
+      },
+      "conversationPrompts": "Invoice processing automation, manual data entry, ERP integration"
+    },
+    "createdAt": "2025-08-20T18:16:55.603Z",
+    "updatedAt": "2025-08-20T18:16:55.603Z"
+  },
+  {
+    "id": "issue::issue_002",
+    "type": "issue",
+    "issueId": "issue_002",
+    "sessionId": "session_002",
+    "userAuth": {
+      "uid": "demo_user_12345",
+      "email": "demo@example.com",
+      "name": "Demo User"
+    },
+    "statement": "Development and marketing team misalignment causing customer commitments and revenue loss",
+    "category": "organizational",
+    "priority": "high",
+    "status": "analyzed",
+    "timestamp": 1755541015603,
+    "analysis": {
+      "rootCause": "Lack of structured communication process and shared understanding between development and marketing teams",
+      "technicalAnalysis": "NON-TECHNICAL - This is a communication and coordination challenge requiring process design and cultural alignment, not technology solutions.",
+      "actionableProblemStatement": "Establish structured feature planning and communication process to align marketing commitments with development capabilities and timelines",
+      "quantifiedBusinessImpact": {
+        "currentCost": "Lost $50K deal, customer churn risk, low team morale",
+        "frequency": "Monthly misalignment issues causing customer impact",
+        "businessValue": "Prevent customer churn, improve team collaboration, increase feature delivery predictability"
+      },
+      "successMetrics": [
+        {
+          "metric": "Feature delivery predictability",
+          "current": "40% on-time delivery",
+          "target": "80% on-time delivery"
+        },
+        {
+          "metric": "Customer commitment accuracy",
+          "current": "Frequent overpromising",
+          "target": "Realistic timelines 90% of time"
+        }
+      ],
+      "implementationRoadmap": [
+        "Design feature planning and approval process",
+        "Establish regular dev-marketing sync meetings",
+        "Create shared roadmap visibility tools",
+        "Implement customer communication templates"
+      ],
+      "organizationalHealthIndicators": {
+        "teamMorale": "Low - blame sessions, siloed teams",
+        "processMaturity": "Ad-hoc - no formal alignment process",
+        "changeReadiness": "Cautious - teams are defensive",
+        "decisionSpeed": "Slow - no clear authority",
+        "resourceAvailability": "Adequate - process design needed",
+        "customerImpact": "Severe - customer satisfaction and retention issues"
+      },
+      "conversationPrompts": "Team communication, marketing-development alignment, customer commitments"
+    },
+    "createdAt": "2025-08-18T18:16:55.603Z",
+    "updatedAt": "2025-08-18T18:16:55.603Z"
+  },
+  {
+    "id": "issue::issue_003",
+    "type": "issue",
+    "issueId": "issue_003",
+    "sessionId": "session_003",
+    "userAuth": {
+      "uid": "demo_user_12345",
+      "email": "demo@example.com",
+      "name": "Demo User"
+    },
+    "statement": "Fragmented customer support system causing delayed responses and lost issues",
+    "category": "technical",
+    "priority": "high",
+    "status": "analyzed",
+    "timestamp": 1755281815603,
+    "analysis": {
+      "rootCause": "Multiple disconnected support channels without centralized tracking or workflow automation",
+      "technicalAnalysis": "TECHNICAL - This is a systems integration and workflow automation challenge. The multiple disconnected tools can be unified through integration and automated routing.",
+      "actionableProblemStatement": "Implement unified support platform with automated ticket creation and routing to reduce response times from 3 days to same-day",
+      "quantifiedBusinessImpact": {
+        "currentCost": "10+ hours/day team inefficiency, customer escalations, satisfaction issues",
+        "frequency": "Daily impact on all customer interactions",
+        "businessValue": "$60K annual savings + improved customer retention"
+      },
+      "successMetrics": [
+        {
+          "metric": "Average response time",
+          "current": "3 days",
+          "target": "Same day (8 hours)"
+        },
+        {
+          "metric": "Team efficiency",
+          "current": "2 hours lost per person/day",
+          "target": "< 30 minutes lost per person/day"
+        }
+      ],
+      "implementationRoadmap": [
+        "Select unified support platform",
+        "Set up email-to-ticket automation",
+        "Integrate Slack and social media channels",
+        "Train team on new workflows"
+      ],
+      "organizationalHealthIndicators": {
+        "teamMorale": "Low - frustration with hunting for information",
+        "processMaturity": "Ad-hoc - no standardized workflow",
+        "changeReadiness": "Ready - clear pain points",
+        "decisionSpeed": "Fast - urgent customer impact",
+        "resourceAvailability": "Adequate - efficiency ROI",
+        "customerImpact": "Severe - response delays, escalations"
+      },
+      "conversationPrompts": "Customer support systems, ticket management, response time optimization"
+    },
+    "createdAt": "2025-08-15T18:16:55.603Z",
+    "updatedAt": "2025-08-15T18:16:55.603Z"
+  },
+  {
+    "id": "issue::issue_004",
+    "type": "issue",
+    "issueId": "issue_004",
+    "sessionId": "session_003",
+    "userAuth": {
+      "uid": "demo_user_12345",
+      "email": "demo@example.com",
+      "name": "Demo User"
+    },
+    "statement": "Inconsistent support process training causing quality variation",
+    "category": "organizational",
+    "priority": "medium",
+    "status": "analyzed",
+    "timestamp": 1755281815603,
+    "analysis": {
+      "rootCause": "No standardized training program or documented support procedures leading to inconsistent customer experience",
+      "technicalAnalysis": "NON-TECHNICAL - This is a training and process standardization challenge requiring documentation and change management, not technology.",
+      "actionableProblemStatement": "Develop standardized support training program and documentation to ensure consistent customer experience quality",
+      "quantifiedBusinessImpact": {
+        "currentCost": "Inconsistent customer experience, extended training time for new hires",
+        "frequency": "Every customer interaction affected by training gaps",
+        "businessValue": "Improved customer satisfaction scores, faster onboarding of support staff"
+      },
+      "successMetrics": [
+        {
+          "metric": "Support quality consistency",
+          "current": "Varies by team member",
+          "target": "90% consistent experience"
+        },
+        {
+          "metric": "New hire time to productivity",
+          "current": "6-8 weeks",
+          "target": "3-4 weeks"
+        }
+      ],
+      "implementationRoadmap": [
+        "Document standard support procedures",
+        "Create training curriculum and materials",
+        "Implement quality monitoring system",
+        "Establish ongoing coaching process"
+      ],
+      "organizationalHealthIndicators": {
+        "teamMorale": "Medium - want to do good work but lack guidance",
+        "processMaturity": "Ad-hoc - tribal knowledge only",
+        "changeReadiness": "Ready - recognize need for standards",
+        "decisionSpeed": "Moderate - requires management buy-in",
+        "resourceAvailability": "Constrained - needs dedicated training resources",
+        "customerImpact": "Moderate - quality inconsistency"
+      },
+      "conversationPrompts": "Support training, process documentation, quality consistency"
+    },
+    "createdAt": "2025-08-15T18:16:55.603Z",
+    "updatedAt": "2025-08-15T18:16:55.603Z"
+  }
+]
