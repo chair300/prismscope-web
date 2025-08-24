@@ -14,68 +14,68 @@ const Features = () => {
   const features = [
     {
       icon: Brain,
-      title: "Patented Institution-Wide Chat Survey Methodology",
-      description: "Our patented approach (patent pending) polls your entire institution through AI chat surveys, uncovering issues each individual faces in their daily work.",
+      title: "Organization-Wide Intelligence Gathering",
+      description: "We survey every person in your organization to identify what they personally consider time-wasted in their role, creating a comprehensive map of inefficiencies from the ground up.",
       highlights: [
-        "Patented chat survey technology",
-        "Complete institutional coverage", 
-        "Individual-level issue discovery",
-        "Aggregated automation insights"
+        "Everyone surveyed systematically",
+        "Personal time-waste identification", 
+        "Comprehensive inefficiency mapping",
+        "Ground-up organizational intelligence"
       ]
     },
     {
       icon: Zap,
-      title: "Soul-Crushing Task Detection & Automation",
-      description: "AI identifies repetitive, meaningless work that drains employee engagement and provides specific automation strategies.",
+      title: "Touchpoint & Process Mapping",
+      description: "We analyze all the touchpoints and processes your people identified, connecting the dots between departments to reveal how inefficiencies cascade through your organization.",
       highlights: [
-        "Task misery analysis",
-        "Automation opportunity mapping",
-        "Human potential liberation",
-        "Culture impact assessment"
-      ]
-    },
-    {
-      icon: MessageSquare,
-      title: "Strategic Intelligence & Conversation Analytics",
-      description: "Captures and analyzes diagnostic conversations to continuously improve problem identification and solution effectiveness.",
-      highlights: [
-        "Conversation prompt storage",
-        "Issue refinement engine",
-        "Optimization roadmapping",
-        "STOP command functionality"
-      ]
-    },
-    {
-      icon: Users,
-      title: "Expert Consultant Matching",
-      description: "Connect with consultants who have deployed similar projects, matched with AI experts who can turn insights into actionable wins with cost estimates.",
-      highlights: [
-        "Similar project experience matching",
-        "AI expert consultation",
-        "Actionable implementation plans",
-        "Detailed cost estimates"
+        "Cross-functional process analysis",
+        "Department interconnection mapping",
+        "Inefficiency cascade identification",
+        "Major cost center revelation"
       ]
     },
     {
       icon: BarChart3,
-      title: "Advanced Administrative Analytics",
-      description: "Analyze patterns across organizations with real-time monitoring of team morale, process maturity, and change readiness.",
+      title: "KPI Framework & ROI Measurement Design",
+      description: "We create specific, measurable KPIs for each identified inefficiency, establishing baseline metrics and ROI tracking systems so you can measure the business impact of any improvements.",
       highlights: [
-        "Domain-based intelligence",
-        "User activity tracking",
-        "Issue classification analytics",
-        "AI-powered similarity reports"
+        "Custom KPI frameworks",
+        "Baseline metric establishment",
+        "ROI tracking systems",
+        "Measurable improvement validation"
+      ]
+    },
+    {
+      icon: Users,
+      title: "Implementation Guidance & ROI Tracking",
+      description: "We can connect you with specialists for implementation support. Most importantly, you'll have the KPIs and measurement framework to track ROI regardless of who implements the solutions.",
+      highlights: [
+        "Specialist network access",
+        "Implementation roadmaps",
+        "ROI measurement frameworks",
+        "Success tracking regardless of implementer"
+      ]
+    },
+    {
+      icon: Target,
+      title: "Identification + Measurement = Guaranteed ROI",
+      description: "Without proper identification and measurement, even the best solutions fail to deliver measurable ROI. We provide the intelligence and KPIs to make any solution successful.",
+      highlights: [
+        "Complete organizational intelligence",
+        "Precise cost calculations",
+        "Data-driven prioritization",
+        "Continuous improvement systems"
       ]
     },
     {
       icon: Shield,
-      title: "Enterprise-Grade Security",
-      description: "Your organizational data remains confidential with end-to-end encryption, SOC 2 compliance, and granular access controls.",
+      title: "Expert Implementation Network",
+      description: "Once we've mapped your organizational inefficiencies and quantified their impact, you need experienced professionals who can actually streamline and improve those processes.",
       highlights: [
-        "End-to-end encryption",
-        "SOC 2 compliance",
-        "GDPR compliant",
-        "Role-based access controls"
+        "Process & technology specialists",
+        "Organizational change experts",
+        "Proven implementation track records",
+        "Industry-specific expertise"
       ]
     }
   ]
@@ -86,18 +86,18 @@ const Features = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-accent-100 text-accent-800 rounded-full text-sm font-medium mb-6">
             <Lightbulb className="w-4 h-4 mr-2" />
-            AI-Powered Automation Intelligence
+            How We Actually Fix This
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Discover Hidden Automation
+            The Real Value: 
             <br />
             <span className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              Goldmines in Your Organization
+              Identification + Measurement = Guaranteed ROI
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Our patented chat survey methodology uncovers automation opportunities 
-            by systematically analyzing every individual's daily work frustrations.
+            Without proper identification and measurement, even the best solutions fail to deliver measurable ROI. 
+            You could have the world's best implementation team, but if they're solving the wrong problems or can't measure success, you're still wasting money.
           </p>
         </div>
 
@@ -128,27 +128,30 @@ const Features = () => {
         </div>
 
         <div className="bg-gradient-to-r from-primary-50 to-accent-50 rounded-2xl p-8 md:p-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Real Results From Real Businesses</h3>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
               <div className="flex items-center justify-center mb-4">
                 <Clock className="w-8 h-8 text-primary-600 mr-2" />
-                <span className="text-3xl font-bold text-gray-900">2-4 hours</span>
+                <span className="text-3xl font-bold text-gray-900">2-4 weeks</span>
               </div>
-              <p className="text-gray-600">Complete analysis vs. 3-6 months traditional consulting</p>
+              <p className="text-gray-600">Complete analysis vs. 6-12 months traditional consulting</p>
             </div>
             <div>
               <div className="flex items-center justify-center mb-4">
                 <Target className="w-8 h-8 text-accent-600 mr-2" />
-                <span className="text-3xl font-bold text-gray-900">25-40%</span>
+                <span className="text-3xl font-bold text-gray-900">$78K-$125K</span>
               </div>
-              <p className="text-gray-600">Improvement in organizational health scores</p>
+              <p className="text-gray-600">Average annual savings identified per organization</p>
             </div>
             <div>
               <div className="flex items-center justify-center mb-4">
                 <Zap className="w-8 h-8 text-green-600 mr-2" />
-                <span className="text-3xl font-bold text-gray-900">40-60%</span>
+                <span className="text-3xl font-bold text-gray-900">90%+</span>
               </div>
-              <p className="text-gray-600">Reduction in soul-crushing, repetitive tasks</p>
+              <p className="text-gray-600">Adoption rates vs. industry average of 30%</p>
             </div>
           </div>
         </div>

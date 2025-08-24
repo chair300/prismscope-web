@@ -9,23 +9,26 @@ const Hero = () => {
         <div className="text-center max-w-5xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
             <span className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              Organizational Intelligence
+              Prismscope
             </span>
             <br />
-            <span className="text-gray-900">for Everyone</span>
+            <span className="text-gray-900">Uncover Hidden Inefficiencies Through Your People's Eyes</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-4 max-w-4xl mx-auto leading-relaxed">
-            <strong>Individual assessments across your organization. Identify high-value organizational ROI with an AI roadmap and implementation plan. Optional expert AI implementation matching.</strong>
+            <strong><em>"We know our people are busy, but where exactly are those hours going? Which activities are costing us the most money, and what can we actually do about it?"</em></strong>
+          </p>
+          
+          <p className="text-lg text-primary-600 font-semibold mb-4">
+            For businesses ready for real results, stop being tired of technology promises.
           </p>
           
           {/* Process Flowchart */}
           <ProcessFlowchart />
           
           <p className="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-            Our patented chat survey methodology (patent pending) uncovers organizational issues from every individual. 
-            We build AI roadmaps with ROI estimates, grouping issues by similarity and functionally defining requirements for each item. 
-            Optionally, our partner network of exceptional AI consultants can facilitate implementation within your organization.
+            We survey everyone in your organization to discover what they personally consider time-wasted, map all the touchpoints and processes, then create measurable KPIs so you can track and improve ROI.
+            We calculate the exact hourly cost of each inefficiency, giving you a prioritized list of what's actually worth fixing.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">

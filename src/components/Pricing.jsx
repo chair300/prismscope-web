@@ -4,71 +4,63 @@ import { Link } from 'react-router-dom'
 const Pricing = () => {
   const plans = [
     {
-      name: "Focused Beam",
-      description: "Free personal automation discovery",
+      name: "Individual Assessment",
+      description: "Personal process analysis",
       price: "Free",
       period: "",
       teamSize: "Individual users",
-      comparison: "Not Available from Consulting Firms",
+      comparison: "Not Available",
       features: [
-        "AI-powered automation opportunity discovery",
         "Personal process analysis",
         "Task automation identification",
         "ROI calculations for identified opportunities",
         "Basic improvement recommendations",
-        "24/7 AI availability",
         "Optional consultant matching"
       ],
       icon: Users,
       popular: false,
-      buttonText: "Start Free Assessment"
+      buttonText: "Start Free Assessment",
+      subtitle: "Perfect for testing our approach"
     },
     {
-      name: "Scoped Spectrum",
-      description: "Per-seat automation intelligence",
+      name: "Team Assessment",
+      description: "Organization-wide transformation",
       price: "$20",
-      period: "/month per seat",
-      teamSize: "Teams of any size",
-      comparison: "$50K - $500K+ per consulting engagement",
+      period: "/employee/month",
+      teamSize: "Growing businesses (50-300 employees)",
+      comparison: "$100K - $300K Traditional Consulting",
       features: [
-        "Everything in Focused Beam",
-        "Organizational assessment report",
-        "Clearly defined action items across team",
+        "Organization-wide assessment report",
+        "Clearly defined action items across teams",
         "Cross-functional process mapping",
-        "Advanced ROI modeling",
-        "Implementation priority matrix",
+        "Advanced ROI modeling with implementation priorities",
         "Progress tracking dashboard",
-        "Email support",
-        "Monthly usage reports",
-        "Priority consultant matching (coming soon)",
-        "Engineer & org consultant network access (coming soon)"
+        "Priority access to implementation experts"
       ],
       icon: Building2,
       popular: true,
-      buttonText: "Get Started"
+      buttonText: "Get Started",
+      subtitle: "For when you're ready to transform your operation"
     },
     {
-      name: "Full Spectrum",
-      description: "Full organizational transformation",
-      price: "Contact",
-      period: "for pricing",
+      name: "Enterprise Solution",
+      description: "Comprehensive transformation platform",
+      price: "Custom",
+      period: "Pricing",
       teamSize: "Large organizations",
-      comparison: "$1M - $5M+ per consulting engagement",
+      comparison: "$500K - $2M+ Traditional Consulting",
       features: [
-        "Everything in Scoped Spectrum",
         "Enterprise-wide automation strategy",
         "Multi-department coordination analysis",
-        "Advanced change management planning",
         "C-suite presentation materials",
         "Dedicated success manager",
         "Custom integration support",
-        "SLA guarantees",
-        "Dedicated consultant team",
-        "Technical & organizational specialists"
+        "Guaranteed results with SLA"
       ],
       icon: Star,
       popular: false,
-      buttonText: "Contact Sales"
+      buttonText: "Contact Sales",
+      subtitle: "For larger organizations needing comprehensive transformation"
     },
   ]
 
@@ -78,18 +70,18 @@ const Pricing = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
             <Zap className="w-4 h-4 mr-2" />
-            Automation ROI Discovery Made Simple
+            Investment vs. Traditional Consulting
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Free Personal Assessments.
+            Start Free. Scale Smart.
             <br />
             <span className="bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
-              $20/month Per Seat Teams.
+              90% Less Than Traditional Consulting.
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Start free with personal automation discovery. Scale to team collaboration at $20/month per seat.
-            Enterprise and white-label solutions available with custom pricing.
+            Free individual assessment to test our approach. Team assessments at $20/employee/month. 
+            Enterprise solutions with custom pricing and guaranteed results.
           </p>
         </div>
 
@@ -123,6 +115,7 @@ const Pricing = () => {
                     <span className="text-gray-600">{plan.period}</span>
                   </div>
                   <p className="text-sm text-gray-500 mb-2">{plan.teamSize}</p>
+                  <p className="text-xs text-blue-600 font-medium mb-2">{plan.subtitle}</p>
                   <p className="text-xs text-red-600 font-medium bg-red-50 px-3 py-1 rounded-full">
                     vs. {plan.comparison}
                   </p>
@@ -153,15 +146,16 @@ const Pricing = () => {
 
         <div className="bg-white rounded-2xl p-8 md:p-12 shadow-lg">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-            Real Investment Comparison
+            Investment vs. Traditional Consulting
           </h3>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b border-gray-200">
-                  <th className="text-left py-4 px-4 font-semibold text-gray-900">Solution Type</th>
-                  <th className="text-left py-4 px-4 font-semibold text-red-600">Traditional Approach</th>
+                  <th className="text-left py-4 px-4 font-semibold text-gray-900">Solution</th>
+                  <th className="text-left py-4 px-4 font-semibold text-red-600">Traditional Consulting</th>
                   <th className="text-left py-4 px-4 font-semibold text-primary-600">Prismscope</th>
+                  <th className="text-left py-4 px-4 font-semibold text-gray-900">Timeline</th>
                 </tr>
               </thead>
               <tbody>
@@ -169,26 +163,31 @@ const Pricing = () => {
                   <td className="py-4 px-4 font-medium">Personal Assessment</td>
                   <td className="py-4 px-4 text-red-600">Not Available</td>
                   <td className="py-4 px-4 text-primary-600 font-semibold">Free</td>
+                  <td className="py-4 px-4">2-4 weeks</td>
                 </tr>
                 <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 font-medium">Team Collaboration (10 people)</td>
-                  <td className="py-4 px-4 text-red-600">$50K - $200K+ per engagement</td>
-                  <td className="py-4 px-4 text-primary-600 font-semibold">$200/month ($20 per seat)</td>
-                </tr>
-                <tr className="border-b border-gray-100">
-                  <td className="py-4 px-4 font-medium">Mid-size Team (50 people)</td>
-                  <td className="py-4 px-4 text-red-600">$200K - $1M+ per engagement</td>
-                  <td className="py-4 px-4 text-primary-600 font-semibold">$1,000/month ($20 per seat)</td>
+                  <td className="py-4 px-4 font-medium">Team Assessment (25 people)</td>
+                  <td className="py-4 px-4 text-red-600">$100K - $300K</td>
+                  <td className="py-4 px-4 text-primary-600 font-semibold">$500/month</td>
+                  <td className="py-4 px-4">2-4 weeks</td>
                 </tr>
                 <tr className="border-b border-gray-100">
                   <td className="py-4 px-4 font-medium">Enterprise Solution</td>
-                  <td className="py-4 px-4 text-red-600">$1M - $5M+ per engagement</td>
-                  <td className="py-4 px-4 text-primary-600 font-semibold">Custom pricing</td>
+                  <td className="py-4 px-4 text-red-600">$500K - $2M+</td>
+                  <td className="py-4 px-4 text-primary-600 font-semibold">Custom (90% less)</td>
+                  <td className="py-4 px-4">2-4 weeks</td>
+                </tr>
+                <tr className="border-b border-gray-100">
+                  <td className="py-4 px-4 font-medium">Implementation Support</td>
+                  <td className="py-4 px-4 text-red-600">Additional $200K+</td>
+                  <td className="py-4 px-4 text-primary-600 font-semibold">Included</td>
+                  <td className="py-4 px-4">6-12 months</td>
                 </tr>
                 <tr>
-                  <td className="py-4 px-4 font-medium">White Label Platform</td>
-                  <td className="py-4 px-4 text-red-600">$2M+ to build in-house</td>
-                  <td className="py-4 px-4 text-primary-600 font-semibold">Revenue sharing model</td>
+                  <td className="py-4 px-4 font-medium">Ongoing Support</td>
+                  <td className="py-4 px-4 text-red-600">$50K+ annually</td>
+                  <td className="py-4 px-4 text-primary-600 font-semibold">Expert network access</td>
+                  <td className="py-4 px-4">Ongoing</td>
                 </tr>
               </tbody>
             </table>
