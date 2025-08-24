@@ -14,6 +14,7 @@ import {
   Lightbulb,
   Shield
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const HRPage = () => {
   const transformations = [
@@ -213,19 +214,19 @@ const HRPage = () => {
               then eliminate those inefficiencies to create an environment where people love their jobs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <Link 
+                to="/demo" 
                 className="btn-primary text-lg flex items-center justify-center"
+              >
+                Check out the demo
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+              <button 
+                className="btn-secondary text-lg"
                 onClick={() => window.location.href = 'https://my.prismscope.ai'}
               >
-                Start Employee Assessment
-                <ArrowRight className="w-5 h-5 ml-2" />
+                Start Free Assessment
               </button>
-              <a 
-                href="#transformations" 
-                className="btn-secondary text-lg"
-              >
-                See Employee Impact
-              </a>
             </div>
           </div>
         </div>

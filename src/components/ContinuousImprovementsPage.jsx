@@ -16,6 +16,7 @@ import {
   Lightbulb,
   Shield
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const ContinuousImprovementsPage = () => {
   const processResults = [
@@ -228,19 +229,19 @@ const ContinuousImprovementsPage = () => {
               competitive advantages through targeted automation and process optimization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <Link 
+                to="/demo" 
                 className="btn-primary text-lg flex items-center justify-center"
+              >
+                Check out the demo
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+              <button 
+                className="btn-secondary text-lg"
                 onClick={() => window.location.href = 'https://my.prismscope.ai'}
               >
-                Start Process Assessment
-                <ArrowRight className="w-5 h-5 ml-2" />
+                Start Free Assessment
               </button>
-              <a 
-                href="#process-results" 
-                className="btn-secondary text-lg"
-              >
-                See CI Results
-              </a>
             </div>
           </div>
         </div>

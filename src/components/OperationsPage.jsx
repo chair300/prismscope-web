@@ -16,6 +16,7 @@ import {
   UserCheck,
   Calendar
 } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const OperationsPage = () => {
   const transformations = [
@@ -242,19 +243,19 @@ const OperationsPage = () => {
               as they focus on the high-impact work that drives real business results.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <Link 
+                to="/demo" 
                 className="btn-primary text-lg flex items-center justify-center"
+              >
+                Check out the demo
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+              <button 
+                className="btn-secondary text-lg"
                 onClick={() => window.location.href = 'https://my.prismscope.ai'}
               >
-                Start Team Assessment
-                <ArrowRight className="w-5 h-5 ml-2" />
+                Start Free Assessment
               </button>
-              <a 
-                href="#transformations" 
-                className="btn-secondary text-lg"
-              >
-                See Team Impact
-              </a>
             </div>
           </div>
         </div>
