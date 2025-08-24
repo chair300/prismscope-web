@@ -10,7 +10,6 @@ resources:
   - namespace.yaml
   - deployment.yaml
   - service.yaml
-  - cloudrun-proxy-service.yaml
   - ingress.yaml
   - cluster-issuer.yaml
 
@@ -25,7 +24,7 @@ commonLabels:
 # Images to patch (useful for CI/CD)
 images:
   - name: gcr.io/ai-problem-statement/prismscope-website
-    newTag: latest
+    newTag: k8s-latest
 
 # Namespace for all resources
 namespace: external-web

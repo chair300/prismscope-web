@@ -6,35 +6,12 @@ metadata:
   labels:
     app: prismscope-website
   annotations:
-    # NGINX Ingress Controller annotations
-    # Proxy to external Cloud Run service
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    nginx.ingress.kubernetes.io/upstream-vhost: "prismscope-website-441834635077.us-central1.run.app"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    
     # Let's Encrypt cert-manager annotations
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     acme.cert-manager.io/http01-edit-in-place: "true"
     
-    # Security headers
-    nginx.ingress.kubernetes.io/configuration-snippet: |
-      add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
-      add_header X-Frame-Options "SAMEORIGIN" always;
-      add_header X-Content-Type-Options "nosniff" always;
-      add_header X-XSS-Protection "1; mode=block" always;
-      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-      add_header Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https: wss:; frame-ancestors 'self';" always;
-    
-    # Rate limiting
-    nginx.ingress.kubernetes.io/rate-limit-connections: "100"
-    nginx.ingress.kubernetes.io/rate-limit-requests-per-second: "10"
-    
-    # Performance optimizations
-    nginx.ingress.kubernetes.io/proxy-body-size: "1m"
-    nginx.ingress.kubernetes.io/proxy-connect-timeout: "5"
-    nginx.ingress.kubernetes.io/proxy-send-timeout: "10"
-    nginx.ingress.kubernetes.io/proxy-read-timeout: "10"
+    # GKE ingress annotations
+    kubernetes.io/ingress.global-static-ip-name: "prismscope-website-static-ip"
 
 spec:
   # TLS configuration with Let's Encrypt
@@ -53,9 +30,9 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: prismscope-cloudrun-proxy
+            name: prismscope-website-service
             port:
-              number: 443
+              number: 80
   
   - host: www.prismscope.ai
     http:
@@ -64,6 +41,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: prismscope-cloudrun-proxy
+            name: prismscope-website-service
             port:
-              number: 443
+              number: 80
