@@ -20,6 +20,7 @@ const Pricing = () => {
       icon: Users,
       popular: false,
       buttonText: "Start Free Assessment",
+      demoButton: true,
       subtitle: "Perfect for testing our approach"
     },
     {
@@ -40,6 +41,7 @@ const Pricing = () => {
       icon: Building2,
       popular: true,
       buttonText: "Get Started",
+      demoButton: true,
       subtitle: "For when you're ready to transform your operation"
     },
     {
@@ -130,15 +132,36 @@ const Pricing = () => {
                   ))}
                 </ul>
 
-                <button 
-                  className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 ${
-                    plan.popular 
-                      ? 'bg-gradient-to-r from-primary-600 to-accent-600 text-white hover:from-primary-700 hover:to-accent-700' 
-                      : 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50'
-                  }`}
-                >
-                  {plan.buttonText}
-                </button>
+                {plan.demoButton ? (
+                  <div className="space-y-3">
+                    <Link 
+                      to="/demo"
+                      className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 block text-center ${
+                        plan.popular 
+                          ? 'bg-gradient-to-r from-primary-600 to-accent-600 text-white hover:from-primary-700 hover:to-accent-700' 
+                          : 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50'
+                      }`}
+                    >
+                      Check out the demo
+                    </Link>
+                    <button 
+                      className="w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 border-2 border-gray-300 text-gray-600 hover:bg-gray-50"
+                      onClick={() => window.location.href = 'https://my.prismscope.ai'}
+                    >
+                      {plan.buttonText}
+                    </button>
+                  </div>
+                ) : (
+                  <button 
+                    className={`w-full py-3 px-6 rounded-lg font-semibold transition-colors duration-200 ${
+                      plan.popular 
+                        ? 'bg-gradient-to-r from-primary-600 to-accent-600 text-white hover:from-primary-700 hover:to-accent-700' 
+                        : 'border-2 border-primary-600 text-primary-600 hover:bg-primary-50'
+                    }`}
+                  >
+                    {plan.buttonText}
+                  </button>
+                )}
               </div>
             )
           })}

@@ -114,7 +114,7 @@ const ExecutivesPage = () => {
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
               Turn Technology Anxiety Into
-              <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent pb-2">
                 Strategic Advantage
               </span>
             </h1>
@@ -123,19 +123,19 @@ const ExecutivesPage = () => {
               delivers measurable ROI while positioning your business ahead of others still hesitating.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <a 
+                href="/demo" 
                 className="btn-primary text-lg flex items-center justify-center"
+              >
+                Check out the demo
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
+              <button 
+                className="btn-secondary text-lg"
                 onClick={() => window.location.href = 'https://my.prismscope.ai'}
               >
                 Start Free Assessment
-                <ArrowRight className="w-5 h-5 ml-2" />
               </button>
-              <a 
-                href="#roi-results" 
-                className="btn-secondary text-lg"
-              >
-                View ROI Examples
-              </a>
             </div>
           </div>
         </div>

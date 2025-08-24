@@ -36,6 +36,7 @@ RUN npm ci --only=production && npm cache clean --force
 # Copy built application and server
 COPY --from=build --chown=appuser:appuser /app/dist ./dist
 COPY --chown=appuser:appuser api-server.js ./
+COPY --chown=appuser:appuser serviceAccountKey.json ./
 
 # Create security.txt for responsible disclosure
 RUN echo -e "Contact: harrison@provoco.ai\nExpires: 2025-12-31T23:59:59Z\nPreferred-Languages: en\nCanonical: https://prismscope.ai/.well-known/security.txt" > ./dist/security.txt
@@ -51,8 +52,7 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 # Switch to non-root user
 USER appuser
 
-# Expose port
-EXPOSE 8080
+# Port will be provided by Cloud Run via PORT env var
 
 # Start the server
 CMD ["npm", "start"]

@@ -32,19 +32,19 @@ const Hero = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <button 
+            <Link 
+              to="/demo" 
               className="btn-primary text-lg flex items-center justify-center"
+            >
+              Check out the demo
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
+            <button 
+              className="btn-secondary text-lg"
               onClick={() => window.location.href = 'https://my.prismscope.ai'}
             >
               Start Free Assessment
-              <ArrowRight className="w-5 h-5 ml-2" />
             </button>
-            <Link 
-              to="/demo" 
-              className="btn-secondary text-lg"
-            >
-              Try Interactive Demo
-            </Link>
             <Link 
               to="/example-report" 
               className="text-primary-600 hover:text-primary-700 underline text-lg font-semibold"
