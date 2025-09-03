@@ -19,81 +19,7 @@ import {
 import { Link } from 'react-router-dom'
 
 const OperationsPage = () => {
-  const transformations = [
-    {
-      title: "Customer Service Operations Breakthrough",
-      issues: [
-        { task: "Data entry tasks", hours: "1,690 hours annually per team member" },
-        { task: "Status update calls", hours: "520 hours annually per team member" },
-        { task: "System switching/lookup", hours: "430 hours annually per team member" }
-      ],
-      costPerEmployee: "$105,600 in non-value-added time (65% of their capacity)",
-      teamImpact: [
-        "2,640 hours per person redirected to customer problem-solving",
-        "Customer resolution time: 2.3 days → 4.6 hours",
-        "Volume capacity: +45% without adding staff",
-        "Employee satisfaction: +60% (\"We actually get to help customers now\")"
-      ]
-    },
-    {
-      title: "Manufacturing Operations Excellence",
-      previousState: "Production managers doing manual \"floor walks\" for status updates",
-      operationalChange: "Real-time production dashboards with automated alerts",
-      teamImpact: [
-        "Managers transitioned from data gatherers to performance coaches",
-        "Production visibility improved from hourly to real-time",
-        "35% reduction in production delays through proactive issue identification",
-        "Team morale improved as managers could focus on problem-solving support"
-      ]
-    },
-    {
-      title: "Administrative Operations Streamlining",
-      previousState: "Invoice processing required 15 manual steps across 3 departments",
-      operationalChange: "Automated workflow with approval routing and exception handling",
-      teamImpact: [
-        "Processing time reduced from 5 days to 4 hours",
-        "Error rate decreased from 8% to 0.2%",
-        "Team capacity freed up to handle 80% more volume without overtime",
-        "Administrative staff transitioned to vendor relationship management"
-      ]
-    }
-  ]
 
-  const performanceMetrics = [
-    {
-      category: "Team Productivity Improvements",
-      metrics: [
-        { label: "Capacity Utilization", value: "40-65% increase in value-added work time" },
-        { label: "Throughput", value: "50-80% more output with existing team size" },
-        { label: "Quality", value: "90%+ reduction in errors through automated processes" },
-        { label: "Response Time", value: "60-75% faster completion of routine operations" }
-      ],
-      icon: TrendingUp,
-      color: "blue"
-    },
-    {
-      category: "Operational Efficiency Gains",
-      metrics: [
-        { label: "Manual Work Reduction", value: "70-85% decrease in administrative overhead" },
-        { label: "Handoff Improvements", value: "50-70% reduction in inter-department delays" },
-        { label: "Data Accuracy", value: "95%+ improvement in information quality and timeliness" },
-        { label: "Process Consistency", value: "100% adherence to standard procedures through automation" }
-      ],
-      icon: Settings,
-      color: "green"
-    },
-    {
-      category: "Team Engagement & Satisfaction",
-      metrics: [
-        { label: "Job Satisfaction", value: "35-55% improvement in \"meaningful work\" ratings" },
-        { label: "Skill Utilization", value: "80%+ of team time spent on core competencies" },
-        { label: "Professional Growth", value: "40% increase in advancement opportunities as capacity increases" },
-        { label: "Stress Reduction", value: "45% decrease in overtime and weekend work requirements" }
-      ],
-      icon: Users,
-      color: "purple"
-    }
-  ]
 
   const operationalExcellence = [
     {
@@ -175,16 +101,16 @@ const OperationsPage = () => {
       outcomes: [
         "Quick elimination of most frustrating manual tasks",
         "Instant improvement in team morale as barriers are removed",
-        "Initial productivity gains of 20-30% in targeted areas",
+        "Initial productivity gains in targeted areas",
         "Clear visibility into workflow efficiency with baseline metrics"
       ]
     },
     {
       timeframe: "Month 1-3: Systematic Improvement",
       outcomes: [
-        "Comprehensive workflow optimization delivering 50-70% productivity gains",
-        "Error rates reduced to near-zero through automated quality controls",
-        "Team capacity expanded by 40-60% without adding headcount",
+        "Comprehensive workflow optimization delivering productivity gains",
+        "Error rates reduced through automated quality controls",
+        "Team capacity expanded without adding headcount",
         "Employee satisfaction improvements as work becomes more engaging"
       ]
     },
@@ -207,20 +133,6 @@ const OperationsPage = () => {
     }
   ]
 
-  const testimonials = [
-    {
-      quote: "My team went from spending 60% of their time on administrative work to less than 15%. Now they're actually doing the strategic work I hired them for.",
-      role: "Manufacturing Operations Manager"
-    },
-    {
-      quote: "The automated workflows eliminated so much friction that my people started volunteering for additional projects. Their engagement level completely transformed.",
-      role: "Customer Service Operations Manager"
-    },
-    {
-      quote: "I used to spend most of my time gathering information to report upward. Now I spend it coaching my team and planning improvements. It's the management job I thought I was taking.",
-      role: "Administrative Operations Manager"
-    }
-  ]
 
   return (
     <div className="pt-20">
@@ -233,14 +145,14 @@ const OperationsPage = () => {
               Prismscope for Operations Managers
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Unlock Your Team's
+              Reveal What's Hidden
               <span className="block bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">
-                Full Potential Every Day
+                Beneath Your Operations
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Free your people from the repetitive tasks that slow them down and watch productivity soar 
-              as they focus on the high-impact work that drives real business results.
+              Years of organic growth in processes and procedures has created soul-crushing tasks buried beneath your workflows, consuming significant team capacity. 
+              More nimble competitors have revealed and eliminated what you can't see, achieving higher operational productivity.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
@@ -254,7 +166,7 @@ const OperationsPage = () => {
                 className="btn-secondary text-lg"
                 onClick={() => window.location.href = 'https://my.prismscope.ai'}
               >
-                Start Free Assessment
+                Reveal Hidden Inefficiencies
               </button>
             </div>
           </div>
@@ -271,8 +183,8 @@ const OperationsPage = () => {
                 The Operations Challenge You're Managing
               </h2>
               <p className="text-lg italic text-gray-700 mb-6">
-                "I know my team is capable of so much more, but they're constantly bogged down in manual processes, 
-                system workarounds, and administrative busy work. How do I remove these barriers so they can operate at full capacity?"
+                "I know my team is capable of so much more, but they're drowning in soul-crushing tasks buried beneath their workflows that I can't even identify. 
+                What hidden inefficiencies are consuming their capacity? How do I reveal and eliminate what I can't see?"
               </p>
               <div className="space-y-3">
                 <p className="font-semibold text-gray-900 mb-2">You're seeing these daily operational friction points:</p>
@@ -302,7 +214,7 @@ const OperationsPage = () => {
               <div className="mt-6 p-4 bg-white rounded-lg">
                 <p className="font-semibold text-green-600">
                   The operational reality: Your people want to deliver excellent results, but inefficient processes 
-                  are preventing them from performing at their best.
+                  are preventing them from performing at their best. Competitors who eliminated these hidden drains are operating at higher productivity.
                 </p>
               </div>
             </div>
@@ -364,126 +276,7 @@ const OperationsPage = () => {
         </div>
       </section>
 
-      {/* Operations Team Transformations */}
-      <section id="transformations" className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-6">
-              <Lightbulb className="w-4 h-4 mr-2" />
-              Operations Team Transformations
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Real Team Impact Stories
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See how we've helped operations managers unlock their team's full potential
-            </p>
-          </div>
-          
-          <div className="space-y-8 max-w-6xl mx-auto">
-            {transformations.map((transformation, index) => (
-              <div key={index} className="bg-gradient-to-r from-gray-50 to-white border border-gray-200 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">{transformation.title}</h3>
-                
-                {transformation.issues && (
-                  <div className="mb-6">
-                    <p className="text-sm text-blue-600 font-semibold mb-3">Organizational Issues Identified:</p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                      {transformation.issues.map((issue, idx) => (
-                        <div key={idx} className="bg-red-50 p-4 rounded-lg">
-                          <p className="font-semibold text-red-800">{issue.task}</p>
-                          <p className="text-red-600 text-sm mt-1">{issue.hours}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="bg-red-100 p-4 rounded-lg mb-4">
-                      <p className="text-sm text-red-600 font-semibold mb-1">Cost Per Employee:</p>
-                      <p className="text-red-800">{transformation.costPerEmployee}</p>
-                    </div>
-                    <div className="bg-green-50 p-4 rounded-lg">
-                      <p className="text-sm text-green-600 font-semibold mb-3">Team Impact After Solution:</p>
-                      <ul className="space-y-2">
-                        {transformation.teamImpact.map((impact, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                            <span className="text-green-800">{impact}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-                
-                {transformation.previousState && (
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div>
-                      <p className="text-sm text-red-600 font-semibold mb-2">Previous State:</p>
-                      <p className="text-gray-700 mb-4">{transformation.previousState}</p>
-                      <p className="text-sm text-blue-600 font-semibold mb-2">Operational Change:</p>
-                      <p className="text-gray-700">{transformation.operationalChange}</p>
-                    </div>
-                    <div>
-                      <p className="text-sm text-green-600 font-semibold mb-3">Team Impact:</p>
-                      <ul className="space-y-2">
-                        {transformation.teamImpact.map((impact, idx) => (
-                          <li key={idx} className="flex items-start">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                            <span className="text-gray-700">{impact}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Operations Performance Metrics */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Operations Performance Metrics
-            </h2>
-            <p className="text-xl text-gray-600">
-              Measurable improvements across all operational dimensions
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {performanceMetrics.map((category, index) => {
-              const IconComponent = category.icon
-              const colorClasses = {
-                blue: 'text-blue-600 bg-blue-100',
-                green: 'text-green-600 bg-green-100',
-                purple: 'text-purple-600 bg-purple-100'
-              }
-              
-              return (
-                <div key={index} className="bg-white rounded-xl shadow-sm p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${colorClasses[category.color]}`}>
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                    {category.category}
-                  </h3>
-                  <div className="space-y-4">
-                    {category.metrics.map((metric, idx) => (
-                      <div key={idx} className="border-l-2 border-primary-200 pl-4">
-                        <p className="font-semibold text-gray-900 text-sm">{metric.label}</p>
-                        <p className="text-gray-600 text-sm mt-1">{metric.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* Why Operations Managers Choose Prismscope */}
       <section className="py-20 bg-white">
@@ -575,80 +368,6 @@ const OperationsPage = () => {
         </div>
       </section>
 
-      {/* Investment Analysis */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Operations Investment Analysis
-            </h2>
-          </div>
-          
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden max-w-5xl mx-auto mb-8">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="text-left py-4 px-6 font-semibold text-gray-900">Operational Need</th>
-                    <th className="text-left py-4 px-6 font-semibold text-red-600">Traditional Approach</th>
-                    <th className="text-left py-4 px-6 font-semibold text-primary-600">Prismscope Solution</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">Process Improvement</td>
-                    <td className="py-4 px-6 text-red-600">Hire more staff</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Automate routine work</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Quality Control</td>
-                    <td className="py-4 px-6 text-red-600">More inspection</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Built-in error prevention</td>
-                  </tr>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">Capacity Expansion</td>
-                    <td className="py-4 px-6 text-red-600">Add headcount</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Optimize existing team utilization</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Performance Monitoring</td>
-                    <td className="py-4 px-6 text-red-600">Manual reporting</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Real-time visibility dashboards</td>
-                  </tr>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">Cross-Training</td>
-                    <td className="py-4 px-6 text-red-600">Extensive documentation</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Simplified, automated workflows</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Scalability</td>
-                    <td className="py-4 px-6 text-red-600">Linear growth model</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Leverage technology for exponential capacity</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-blue-50 p-6 rounded-lg text-center">
-              <p className="text-lg font-semibold text-blue-800 mb-2">Investment</p>
-              <p className="text-2xl font-bold text-blue-900">$25K-$100K</p>
-              <p className="text-blue-700 text-sm">For comprehensive workflow optimization</p>
-            </div>
-            <div className="bg-green-50 p-6 rounded-lg text-center">
-              <p className="text-lg font-semibold text-green-800 mb-2">Payback</p>
-              <p className="text-2xl font-bold text-green-900">6-12 months</p>
-              <p className="text-green-700 text-sm">Through productivity gains and error reduction</p>
-            </div>
-            <div className="bg-purple-50 p-6 rounded-lg text-center">
-              <p className="text-lg font-semibold text-purple-800 mb-2">Ongoing Value</p>
-              <p className="text-2xl font-bold text-purple-900">Sustained</p>
-              <p className="text-purple-700 text-sm">Operational excellence with continuous improvement</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Operations Manager Action Plan */}
       <section className="py-20 bg-gray-50">
@@ -806,31 +525,6 @@ const OperationsPage = () => {
         </div>
       </section>
 
-      {/* Operations Manager Testimonials */}
-      <section className="py-16 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-4">
-              <UserCheck className="w-4 h-4 mr-2" />
-              Real Operations Manager Feedback
-            </div>
-            <h2 className="text-3xl font-bold text-gray-900">
-              What Operations Managers Are Saying
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-lg p-6 shadow-sm">
-                <blockquote className="text-gray-700 mb-4 italic">
-                  "{testimonial.quote}"
-                </blockquote>
-                <p className="text-sm text-gray-500">— {testimonial.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Operations Excellence Guarantee */}
       <section className="py-16 bg-blue-50">

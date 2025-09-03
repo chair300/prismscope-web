@@ -17,74 +17,12 @@ import {
 import { Link } from 'react-router-dom'
 
 const HRPage = () => {
-  const transformations = [
-    {
-      title: "Marketing Team Transformation",
-      issue: "Marketing analysts spending 780 hours annually on manual report generation that managers barely read",
-      cost: "$46,800 in professional time + $23,400 in missed strategic opportunities = $70,200 annual impact",
-      solution: "Automated dashboards and exception-based reporting",
-      employeeImpact: "780 hours freed for strategic campaign development, 40% increase in job satisfaction",
-      businessResult: "3 internal promotions within 6 months, zero voluntary departures (previously lost 2-3 analysts annually)",
-      icon: BarChart3
-    },
-    {
-      title: "Customer Service Revolution",
-      before: "Reps spent 60% of time on data entry and status updates",
-      after: "Workflow automation let them focus on complex problem-solving",
-      employeeImpact: "Customer satisfaction scores improved 35%, team morale up 50%",
-      careerGrowth: "5 reps promoted to senior roles, 2 moved into management",
-      icon: Users
-    },
-    {
-      title: "Operations Team Empowerment",
-      before: "Managers doing \"floor checks\" because system data was unreliable",
-      after: "Real-time dashboards provided accurate, instant visibility",
-      employeeImpact: "Managers became coaches instead of data-gatherers",
-      development: "60% of team enrolled in leadership development programs",
-      icon: TrendingUp
-    }
-  ]
 
-  const hrMetrics = [
-    {
-      category: "Employee Engagement Improvements",
-      metrics: [
-        { label: "Job Satisfaction", value: "25-40% increase within 6 months" },
-        { label: "Meaningful Work Perception", value: "50-60% improvement in \"using my skills\" ratings" },
-        { label: "Work-Life Balance", value: "30% reduction in overtime/weekend work" },
-        { label: "Internal Mobility", value: "40% increase in internal promotions and lateral moves" }
-      ],
-      icon: Heart,
-      color: "red"
-    },
-    {
-      category: "Retention & Attraction Benefits",
-      metrics: [
-        { label: "Voluntary Turnover", value: "30-50% reduction in first 12 months" },
-        { label: "High Performer Retention", value: "80%+ retention rate of top talent" },
-        { label: "Recruitment Advantage", value: "\"Great place to work\" becomes authentic recruiting tool" },
-        { label: "Time-to-Fill", value: "25% faster hiring as reputation improves" }
-      ],
-      icon: UserCheck,
-      color: "green"
-    },
-    {
-      category: "Development & Growth Outcomes",
-      metrics: [
-        { label: "Skill Utilization", value: "70% increase in employees using their core competencies daily" },
-        { label: "Learning Participation", value: "45% more enrollment in development programs" },
-        { label: "Innovation Metrics", value: "3x more employee-generated improvement ideas" },
-        { label: "Career Progression", value: "60% increase in internal promotions within 18 months" }
-      ],
-      icon: Award,
-      color: "blue"
-    }
-  ]
 
   const cultureAdvantages = [
     {
       title: "Meaningful Work Every Day",
-      change: "Employees spend 60-80% more time on work that uses their core skills",
+      change: "Employees spend more time on work that uses their core skills",
       experience: "Higher job satisfaction as people do work they find fulfilling",
       impact: "Better quality outcomes when people focus on what they do best"
     },
@@ -204,14 +142,14 @@ const HRPage = () => {
               Prismscope for HR Professionals
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Give Every Employee A Voice In
-              <span className="block bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-                Workplace Improvement
+              Reveal The Hidden Tasks
+              <span className="block bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent pb-2">
+                That Are Killing Engagement
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Survey everyone in your organization to discover what they personally consider soul-crushing work, 
-              then eliminate those inefficiencies to create an environment where people love their jobs.
+              Soul-crushing tasks are buried deep in your employees' workflows, consuming their energy and motivation. 
+              We reveal what's hidden beneath surface operations and eliminate the invisible drains on job satisfaction.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
@@ -225,7 +163,7 @@ const HRPage = () => {
                 className="btn-secondary text-lg"
                 onClick={() => window.location.href = 'https://my.prismscope.ai'}
               >
-                Start Free Assessment
+                Reveal Hidden Employee Drains
               </button>
             </div>
           </div>
@@ -242,23 +180,23 @@ const HRPage = () => {
                 The HR Challenge You're Managing
               </h2>
               <p className="text-lg italic text-gray-700 mb-6">
-                "Our talented employees are spending too much time on administrative tasks instead of the strategic work they were hired to do. 
-                I can see the frustration building, and I'm worried about retention. How do I create a workplace that actually energizes people?"
+                "Our talented employees are drowning in hidden soul-crushing tasks buried within their normal workflows. 
+                I can see the frustration building, but I can't identify what's really killing their motivation. How do I reveal and eliminate what I can't see?"
               </p>
               <div className="space-y-3">
                 <p className="font-semibold text-gray-900 mb-2">You're seeing these warning signs:</p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700">High performers complaining about "boring" administrative work</span>
+                    <span className="text-gray-700">High performers frustrated but unable to articulate what's killing their motivation</span>
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700">Exit interviews mentioning repetitive tasks and lack of meaningful work</span>
+                    <span className="text-gray-700">Exit interviews mentioning "something just felt off" about their daily work</span>
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700">Talented candidates choosing competitors who promise more engaging roles</span>
+                    <span className="text-gray-700">Talented candidates choosing competitors who eliminated the hidden drains you still have</span>
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -272,8 +210,8 @@ const HRPage = () => {
               </div>
               <div className="mt-6 p-4 bg-white rounded-lg">
                 <p className="font-semibold text-red-600">
-                  The hidden issue: Your best people aren't leaving because of salary or benefits. 
-                  They're leaving because their days are filled with work that doesn't utilize their talents.
+                  The hidden reality: Your best people aren't leaving because of salary or benefits. 
+                  They're leaving because soul-crushing tasks are buried within their workflows, killing their passion for work.
                 </p>
               </div>
             </div>
@@ -294,9 +232,9 @@ const HRPage = () => {
               <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
                 <BarChart3 className="w-6 h-6 text-red-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 1: Quantify What's Draining Your People</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 1: Reveal Hidden Soul-Crushing Tasks</h3>
               <p className="text-gray-600">
-                We survey everyone in your organization to identify the specific tasks that are killing employee motivation 
+                We look beneath surface operations to reveal the buried tasks that are invisibly killing employee motivation 
                 and calculate exactly how many hours your talented people waste on soul-crushing work - then show you the true cost 
                 in both dollars and talent retention risk.
               </p>
@@ -333,131 +271,7 @@ const HRPage = () => {
         </div>
       </section>
 
-      {/* Employee Experience Transformations */}
-      <section id="transformations" className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
-              <Lightbulb className="w-4 h-4 mr-2" />
-              Employee Experience Transformations
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Real People, Real Results
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See how we've helped teams transform from frustration to fulfillment
-            </p>
-          </div>
-          
-          <div className="space-y-8 max-w-6xl mx-auto">
-            {transformations.map((transformation, index) => {
-              const IconComponent = transformation.icon
-              return (
-                <div key={index} className="bg-gradient-to-r from-gray-50 to-white border border-gray-200 rounded-xl p-8">
-                  <div className="flex items-start mb-6">
-                    <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
-                      <IconComponent className="w-6 h-6 text-primary-600" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900">{transformation.title}</h3>
-                  </div>
-                  
-                  {transformation.issue && (
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                      <div>
-                        <p className="text-sm text-gray-500 mb-2">Organizational Issue Identified:</p>
-                        <p className="text-gray-700 mb-4">{transformation.issue}</p>
-                        <p className="text-sm text-gray-500 mb-2">Hidden Cost:</p>
-                        <p className="text-gray-700 mb-4">{transformation.cost}</p>
-                        <p className="text-sm text-gray-500 mb-2">Solution:</p>
-                        <p className="text-gray-700">{transformation.solution}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500 mb-2">Employee Impact:</p>
-                        <p className="text-gray-700 mb-4">{transformation.employeeImpact}</p>
-                        <div className="bg-green-100 rounded-lg p-4">
-                          <p className="text-sm text-green-600 font-semibold">Business Result:</p>
-                          <p className="text-green-800">{transformation.businessResult}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                  
-                  {transformation.before && (
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                      <div>
-                        <div className="mb-4">
-                          <p className="text-sm text-red-500 font-semibold mb-2">Before:</p>
-                          <p className="text-gray-700">{transformation.before}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm text-green-500 font-semibold mb-2">After:</p>
-                          <p className="text-gray-700">{transformation.after}</p>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="mb-4">
-                          <p className="text-sm text-blue-500 font-semibold mb-2">Employee Impact:</p>
-                          <p className="text-gray-700">{transformation.employeeImpact}</p>
-                        </div>
-                        <div className="bg-blue-100 rounded-lg p-4">
-                          <p className="text-sm text-blue-600 font-semibold">
-                            {transformation.careerGrowth ? 'Career Growth:' : 'Leadership Development:'}
-                          </p>
-                          <p className="text-blue-800">{transformation.careerGrowth || transformation.development}</p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* HR Metrics Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              The HR Metrics That Matter
-            </h2>
-            <p className="text-xl text-gray-600">
-              Measurable improvements that matter to both people and business
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {hrMetrics.map((category, index) => {
-              const IconComponent = category.icon
-              const colorClasses = {
-                red: 'text-red-600 bg-red-100',
-                green: 'text-green-600 bg-green-100',
-                blue: 'text-blue-600 bg-blue-100'
-              }
-              
-              return (
-                <div key={index} className="bg-white rounded-xl shadow-sm p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${colorClasses[category.color]}`}>
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                    {category.category}
-                  </h3>
-                  <div className="space-y-4">
-                    {category.metrics.map((metric, idx) => (
-                      <div key={idx} className="border-l-2 border-primary-200 pl-4">
-                        <p className="font-semibold text-gray-900 text-sm">{metric.label}</p>
-                        <p className="text-gray-600 text-sm mt-1">{metric.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* Why HR Teams Choose Prismscope */}
       <section className="py-20 bg-white">
@@ -545,62 +359,6 @@ const HRPage = () => {
         </div>
       </section>
 
-      {/* Investment Comparison */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              HR Investment Comparison
-            </h2>
-          </div>
-          
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden max-w-4xl mx-auto">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="text-left py-4 px-6 font-semibold text-gray-900">Initiative Type</th>
-                    <th className="text-left py-4 px-6 font-semibold text-red-600">Traditional Approach</th>
-                    <th className="text-left py-4 px-6 font-semibold text-primary-600">Prismscope</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">Employee Engagement Programs</td>
-                    <td className="py-4 px-6 text-red-600">$50K-100K annually</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Process improvements: $25K-75K</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Retention Initiatives</td>
-                    <td className="py-4 px-6 text-red-600">10-15% annual turnover</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">5-8% annual turnover</td>
-                  </tr>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">Recruitment Costs</td>
-                    <td className="py-4 px-6 text-red-600">$15K per professional hire</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">25% reduction through reputation</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Training & Development</td>
-                    <td className="py-4 px-6 text-red-600">Limited participation</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">45% increase in engagement</td>
-                  </tr>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">Culture Change Timeline</td>
-                    <td className="py-4 px-6 text-red-600">18-24 months</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">6-12 months with process changes</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Measurable ROI</td>
-                    <td className="py-4 px-6 text-red-600">Difficult to quantify</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Clear metrics on satisfaction & retention</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* HR Implementation Roadmap */}
       <section className="py-20 bg-gray-50">

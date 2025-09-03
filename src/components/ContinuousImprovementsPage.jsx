@@ -19,77 +19,7 @@ import {
 import { Link } from 'react-router-dom'
 
 const ContinuousImprovementsPage = () => {
-  const processResults = [
-    {
-      title: "Manufacturing Operations Transformation",
-      issues: [
-        { process: "Order processing", hours: "1,456 hours annually on manual data transfer between systems" },
-        { process: "Quality tracking", hours: "624 hours annually on spreadsheet-based error logging" },
-        { process: "Status reporting", hours: "832 hours annually on manual production updates" }
-      ],
-      totalCost: "$145,600 in identified labor waste + $87,300 in error-related costs = $232,900 annual impact",
-      redesign: "Integrated automation eliminating 2,912 hours of manual work",
-      impact: "$420K total annual savings, 73% cycle time reduction, 4.2x customer satisfaction improvement"
-    },
-    {
-      title: "Professional Services Workflow Optimization",
-      baseline: "Project status reporting required 23 hours/week across teams",
-      redesign: "Automated data collection with exception-based reporting",
-      impacts: [
-        "84% reduction in reporting labor (23 hours to 3.7 hours weekly)",
-        "100% improvement in data timeliness (weekly to real-time visibility)",
-        "$180K annual savings in professional time reallocation",
-        "67% increase in billable hour utilization"
-      ]
-    },
-    {
-      title: "Supply Chain Process Excellence",
-      baseline: "Vendor management involved 156 manual data points weekly",
-      redesign: "Integration-based automation with performance dashboards",
-      impacts: [
-        "89% reduction in manual data handling (156 to 17 data points)",
-        "340% improvement in vendor performance visibility",
-        "$290K annual savings through better vendor negotiations and reduced admin",
-        "28% improvement in on-time delivery performance"
-      ]
-    }
-  ]
 
-  const metricsCategories = [
-    {
-      category: "Process Performance Indicators",
-      metrics: [
-        { label: "Cycle Time Reduction", value: "60-85% improvement in end-to-end process speeds" },
-        { label: "Quality Improvements", value: "90-99% error reduction in automated processes" },
-        { label: "Throughput Gains", value: "40-70% increase in process capacity without adding resources" },
-        { label: "Waste Elimination", value: "$200K-$800K annually in identified and eliminated waste" }
-      ],
-      icon: TrendingUp,
-      color: "blue"
-    },
-    {
-      category: "Implementation Success Metrics",
-      metrics: [
-        { label: "Project ROI", value: "300-700% return on process improvement investments" },
-        { label: "Time to Value", value: "60-90 days for most automation implementations" },
-        { label: "Adoption Rates", value: "90%+ employee adoption when processes genuinely improve work" },
-        { label: "Sustainability", value: "95%+ of improvements maintained 12+ months post-implementation" }
-      ],
-      icon: Target,
-      color: "green"
-    },
-    {
-      category: "Strategic CI Impact",
-      metrics: [
-        { label: "Improvement Pipeline", value: "3-5x increase in improvement ideas from employees" },
-        { label: "Capability Maturity", value: "Systematic progression from ad-hoc to optimized processes" },
-        { label: "Knowledge Management", value: "Documented best practices and standard work procedures" },
-        { label: "Continuous Culture", value: "Self-sustaining improvement mindset across organization" }
-      ],
-      icon: Award,
-      color: "purple"
-    }
-  ]
 
   const processExcellence = [
     {
@@ -166,7 +96,7 @@ const ContinuousImprovementsPage = () => {
       timeframe: "Immediate Process Gains (0-3 months)",
       outcomes: [
         "Clear visibility into all organizational inefficiencies with quantified costs",
-        "Quick wins delivering 20-40% improvement in targeted processes",
+        "Quick wins delivering improvement in targeted processes",
         "Data-driven justification for larger improvement investments",
         "Stakeholder confidence in CI program through measurable results"
       ]
@@ -174,9 +104,9 @@ const ContinuousImprovementsPage = () => {
     {
       timeframe: "Systematic Improvements (3-12 months)",
       outcomes: [
-        "60-85% cycle time improvements across core value streams",
-        "90%+ error reduction in processes touched by automation",
-        "$500K-$2M+ annual savings depending on organization size",
+        "Cycle time improvements across core value streams",
+        "Error reduction in processes touched by automation",
+        "Annual savings depending on organization size",
         "Self-sustaining improvement culture with employee engagement"
       ]
     },
@@ -219,14 +149,14 @@ const ContinuousImprovementsPage = () => {
               Prismscope for Continuous Improvement Professionals
             </div>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              From Process Problems To
+              From Hidden Inefficiencies To
               <span className="block bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">
-                Performance Breakthroughs
+                Revealed Performance Breakthroughs
               </span>
             </h1>
             <p className="text-xl text-gray-600 mb-8">
-              Systematically identify which inefficiencies are costing you the most, then transform them into 
-              competitive advantages through targeted automation and process optimization.
+              Reveal the soul-crushing tasks buried beneath your processes that are killing employee motivation while competitors have already identified and eliminated them. 
+              Transform hidden inefficiencies into competitive advantages through targeted elimination that energizes your team and optimizes performance.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
@@ -240,7 +170,7 @@ const ContinuousImprovementsPage = () => {
                 className="btn-secondary text-lg"
                 onClick={() => window.location.href = 'https://my.prismscope.ai'}
               >
-                Start Free Assessment
+                Reveal Hidden Inefficiencies
               </button>
             </div>
           </div>
@@ -257,20 +187,19 @@ const ContinuousImprovementsPage = () => {
                 The CI Challenge You're Solving
               </h2>
               <p className="text-lg italic text-gray-700 mb-6">
-                "I can see inefficiencies everywhere - manual data entry, redundant approvals, information silos - 
-                but I need data-driven prioritization. Which processes should I improve first to deliver maximum impact 
-                with our limited resources?"
+                "I can see surface-level inefficiencies everywhere - manual data entry, redundant approvals, information silos - 
+                but what soul-crushing tasks are hidden beneath that are killing my team's motivation? Which buried inefficiencies should I reveal and eliminate first to energize employees while delivering maximum operational impact?"
               </p>
               <div className="space-y-3">
                 <p className="font-semibold text-gray-900 mb-2">You're dealing with these common CI obstacles:</p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700">Too many improvement opportunities and not enough resources to address them all</span>
+                    <span className="text-gray-700">Hidden soul-crushing tasks buried beneath surface operations that you can't identify</span>
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700">Difficulty quantifying the business impact of various process inefficiencies</span>
+                    <span className="text-gray-700">Competitors revealing and eliminating inefficiencies you don't even know exist</span>
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
@@ -278,18 +207,18 @@ const ContinuousImprovementsPage = () => {
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700">Manual processes that everyone knows are inefficient but seem too complex to fix</span>
+                    <span className="text-gray-700">Organic growth has layered complexity beneath operations, making problems invisible</span>
                   </li>
                   <li className="flex items-start">
                     <div className="w-2 h-2 bg-yellow-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                    <span className="text-gray-700">Lack of baseline data to measure the true impact of improvements</span>
+                    <span className="text-gray-700">Operating partially blind while competitors have full visibility into hidden waste</span>
                   </li>
                 </ul>
               </div>
               <div className="mt-6 p-4 bg-white rounded-lg">
                 <p className="font-semibold text-blue-600">
-                  The systematic approach you need: Data-driven process analysis that quantifies cost, effort, 
-                  and impact for every improvement opportunity.
+                  The lens you need: Prismscope reveals hidden soul-crushing tasks buried beneath surface operations, 
+                  quantifying the invisible waste that competitors have already eliminated.
                 </p>
               </div>
             </div>
@@ -310,10 +239,10 @@ const ContinuousImprovementsPage = () => {
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                 <BarChart3 className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 1: Comprehensive Organizational Issue Discovery</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Step 1: Hidden Soul-Crushing Task Discovery</h3>
               <p className="text-gray-600">
-                We systematically identify every inefficiency across your organization and calculate the exact hours spent 
-                on each problematic process - then quantify the true cost impact to give you data-driven prioritization.
+                We look where others don't—through employee perspectives at every level—to reveal soul-crushing tasks 
+                invisible to surface analysis that are killing team motivation. We expose work disguised as necessary and quantify both hidden cost impact and employee satisfaction drain.
               </p>
             </div>
             <div className="bg-white p-8 rounded-xl shadow-sm">
@@ -350,127 +279,7 @@ const ContinuousImprovementsPage = () => {
         </div>
       </section>
 
-      {/* Process Improvement Results */}
-      <section id="process-results" className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-6">
-              <Activity className="w-4 h-4 mr-2" />
-              Process Improvement Results
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Real CI Transformations
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              See how we've helped CI professionals deliver measurable process improvements
-            </p>
-          </div>
-          
-          <div className="space-y-8 max-w-6xl mx-auto">
-            {processResults.map((result, index) => (
-              <div key={index} className="bg-gradient-to-r from-gray-50 to-white border border-gray-200 rounded-xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">{result.title}</h3>
-                
-                {result.issues && (
-                  <div className="mb-6">
-                    <p className="text-sm text-blue-600 font-semibold mb-3">Organizational Issues Discovered:</p>
-                    <div className="space-y-2 mb-4">
-                      {result.issues.map((issue, idx) => (
-                        <div key={idx} className="flex items-start">
-                          <span className="text-blue-500 mr-2">•</span>
-                          <span className="text-gray-700">
-                            <strong>{issue.process}:</strong> {issue.hours}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    <div className="bg-red-50 p-4 rounded-lg mb-4">
-                      <p className="text-sm text-red-600 font-semibold mb-1">Total Hidden Cost:</p>
-                      <p className="text-red-800">{result.totalCost}</p>
-                    </div>
-                    <div className="bg-blue-50 p-4 rounded-lg mb-4">
-                      <p className="text-sm text-blue-600 font-semibold mb-1">Process Redesign:</p>
-                      <p className="text-blue-800">{result.redesign}</p>
-                    </div>
-                    <div className="bg-green-50 p-4 rounded-lg">
-                      <p className="text-sm text-green-600 font-semibold mb-1">Measurable Impact:</p>
-                      <p className="text-green-800">{result.impact}</p>
-                    </div>
-                  </div>
-                )}
 
-                {result.baseline && (
-                  <div>
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                      <div>
-                        <p className="text-sm text-red-600 font-semibold mb-2">Baseline State:</p>
-                        <p className="text-gray-700 mb-4">{result.baseline}</p>
-                        <p className="text-sm text-blue-600 font-semibold mb-2">Process Redesign:</p>
-                        <p className="text-gray-700">{result.redesign}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-green-600 font-semibold mb-2">Measurable Impact:</p>
-                        <ul className="space-y-2">
-                          {result.impacts.map((impact, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                              <span className="text-gray-700">{impact}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CI Metrics Dashboard */}
-      <section className="py-20 bg-gray-50">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Continuous Improvement Metrics Dashboard
-            </h2>
-            <p className="text-xl text-gray-600">
-              Track success across all dimensions of process improvement
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {metricsCategories.map((category, index) => {
-              const IconComponent = category.icon
-              const colorClasses = {
-                blue: 'text-blue-600 bg-blue-100',
-                green: 'text-green-600 bg-green-100',
-                purple: 'text-purple-600 bg-purple-100'
-              }
-              
-              return (
-                <div key={index} className="bg-white rounded-xl shadow-sm p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 ${colorClasses[category.color]}`}>
-                      <IconComponent className="w-5 h-5" />
-                    </div>
-                    {category.category}
-                  </h3>
-                  <div className="space-y-4">
-                    {category.metrics.map((metric, idx) => (
-                      <div key={idx} className="border-l-2 border-primary-200 pl-4">
-                        <p className="font-semibold text-gray-900 text-sm">{metric.label}</p>
-                        <p className="text-gray-600 text-sm mt-1">{metric.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* Why CI Professionals Choose Prismscope */}
       <section className="py-20 bg-white">
@@ -562,62 +371,6 @@ const ContinuousImprovementsPage = () => {
         </div>
       </section>
 
-      {/* Investment Comparison */}
-      <section className="py-20 bg-white">
-        <div className="container-custom">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              CI Investment & ROI Analysis
-            </h2>
-          </div>
-          
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden max-w-5xl mx-auto">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="text-left py-4 px-6 font-semibold text-gray-900">Improvement Type</th>
-                    <th className="text-left py-4 px-6 font-semibold text-red-600">Traditional CI Approach</th>
-                    <th className="text-left py-4 px-6 font-semibold text-primary-600">Prismscope CI Method</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">Process Analysis</td>
-                    <td className="py-4 px-6 text-red-600">6-12 weeks manual mapping</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">2-3 weeks with systematic data collection</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Impact Quantification</td>
-                    <td className="py-4 px-6 text-red-600">Rough estimates</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Precise cost/benefit analysis</td>
-                  </tr>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">Solution Design</td>
-                    <td className="py-4 px-6 text-red-600">Manual process redesign</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Automation-integrated optimization</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Implementation Support</td>
-                    <td className="py-4 px-6 text-red-600">Limited follow-up</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Full implementation roadmap with KPIs</td>
-                  </tr>
-                  <tr className="border-t border-gray-200">
-                    <td className="py-4 px-6 font-medium">ROI Measurement</td>
-                    <td className="py-4 px-6 text-red-600">Difficult to track</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">Built-in metrics and reporting</td>
-                  </tr>
-                  <tr className="border-t border-gray-200 bg-gray-50">
-                    <td className="py-4 px-6 font-medium">Sustainability</td>
-                    <td className="py-4 px-6 text-red-600">60% of improvements fade</td>
-                    <td className="py-4 px-6 text-primary-600 font-semibold">95% maintained through automation</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* CI Professional Action Plan */}
       <section className="py-20 bg-gray-50">
